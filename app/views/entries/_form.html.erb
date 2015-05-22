@@ -1,17 +1,19 @@
-<%= form_for(@entry) do |f| %>
-  <% if @entry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being submitted:</h2>
+<div class="container">
+  <%= form_for(@entry) do |f| %>
+    <% if @entry.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being submitted:</h2>
 
-      <ul>
-      <% @entry.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+        <ul>
+        <% @entry.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.text_field :name, autofocus: true, placeholder: "Name" %>
+    <%= f.text_field :url, autofocus: true, placeholder: "URL" %>
+    <%= f.text_area :about, autofocus: true, placeholder: "About" %>
+    <%= f.submit "Submit" %>
   <% end %>
-  <%= f.text_field :name, autofocus: true, placeholder: "Name" %>
-  <%= f.text_field :url, autofocus: true, placeholder: "URL" %>
-  <%= f.text_area :about, autofocus: true, placeholder: "About" %>
-  <%= f.submit "Submit" %>
-<% end %>
+</div>
