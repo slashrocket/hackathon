@@ -1,5 +1,9 @@
-<div class="container entry">
+<div class="row">
   <% @allentries.each do |e| %>
-    <h2><%= e.name %></h2>
+      <div class="col-md-4 entry">
+        <h1 class="text-left"><%= e.name %></h1>
+        <h3><a href="<%= e.url %>" class="text-left"><%= e.url %></a></h3>
+        <p class="lead text-left"><%= e.about %></p>
+      </div>
   <% end %>
 </div>

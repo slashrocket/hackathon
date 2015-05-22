@@ -1,4 +1,4 @@
-<div class="container">
+<div class="col-md-4 col-md-offset-4">
   <%= form_for(@entry) do |f| %>
     <% if @entry.errors.any? %>
       <div id="error_explanation">
@@ -11,9 +11,18 @@
         </ul>
       </div>
     <% end %>
-    <%= f.text_field :name, autofocus: true, placeholder: "Name" %>
-    <%= f.text_field :url, autofocus: true, placeholder: "URL" %>
-    <%= f.text_area :about, autofocus: true, placeholder: "About" %>
-    <%= f.submit "Submit" %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :url %>
+      <%= f.text_field :url, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :about %>
+      <%= f.text_area :about, class: "form-control" %>
+    </div>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>
