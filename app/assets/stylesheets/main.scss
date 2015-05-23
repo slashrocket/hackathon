@@ -1,6 +1,29 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic);
+
+$head-text: "Kaushan Script", cursive;
+$body-text: Merriweather, serif;
+
+body {
+  font-family: $body-text;
+}
+
 .hero {
-  font-size: 5em;
+  background-color: transparent !important;
+}
+
+.hacktext {
+  font-family: $head-text;
+}
+
+.navbar-brand {
+  font-family: $head-text;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
 }

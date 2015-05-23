@@ -1,8 +1,8 @@
 <div class="row">
   <% @allentries.each do |e| %>
       <div class="col-md-10 col-md-offset-1 entry">
-        <a href="<%= e.url %>"><span class="title text-left"><%= truncate(e.name, length: 33) %></span></a>
-        <a href="<%= e.url %>" class="repo-link"><span class="lead"><%= truncate(e.url, length: 45) %></span></a>
+        <a href="<%= e.url %>"><span class="title text-left"><%= truncate(e.name, length: 30) %></span></a>
+        <a href="<%= e.url %>" class="repo-link"><span class="lead"><%= truncate(e.url, length: 35) %></span></a>
         <p class="lead text-left"><%= e.about %></p>
       </div>
   <% end %>
