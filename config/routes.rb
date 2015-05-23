@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :entries
   resources :main
-  match '/submissions', to: 'main#index', via: 'get', as: 'submissions'
-
+  get 'submissions', to: 'main#index'
+  get '/auth/slack/callback', to: 'sessions#create'
+  # for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
