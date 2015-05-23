@@ -1,5 +1,8 @@
 class MainController < ApplicationController
   def index
-    @allentries = Entry.all
+    @allentries = Entry.order("id DESC")
+  end
+
+  def home
   end
 end

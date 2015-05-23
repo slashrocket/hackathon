@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root 'main#index'
+  root 'main#home'
   devise_for :users
   resources :entries
   resources :main
+  match '/submissions', to: 'main#index', via: 'get', as: 'submissions'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

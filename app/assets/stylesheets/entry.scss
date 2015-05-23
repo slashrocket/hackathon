@@ -4,4 +4,18 @@
 .entry {
   background: #e9e9e9;
   border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.entry:hover {
+  background: #ddd;
+}
+
+.entry .title {
+  font-size: 2.5em;
+}
+
+.entry a {
+  float: right;
+  margin-top: 1%;
 }

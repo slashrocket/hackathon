@@ -20,8 +20,7 @@ class EntriesController < ApplicationController
   end
 
   def show
-    user_id = User.find(current_user)
-    @entry = Entry.find(user_id)
+    @entry = Entry.find(params[:id])
   end
 
   def index
@@ -34,6 +33,10 @@ class EntriesController < ApplicationController
   end
 
   private
+
+  def show_params
+    params.require(:entry).permit(:id)
+  end
 
   def entry_params
     params.require(:entry).permit(:name, :url, :about, :user_id)
