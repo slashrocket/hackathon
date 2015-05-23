@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :authenticate_user!, unless: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
 
   def new
     @entry = Entry.new
