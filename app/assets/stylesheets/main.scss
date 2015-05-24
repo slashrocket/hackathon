@@ -6,6 +6,9 @@
 
 $head-text: "Kaushan Script", cursive;
 $body-text: Merriweather, serif;
+@mixin grey-background($opacity) {
+  background: rgba(248,248,248,$opacity);
+}
 
 body {
   font-family: $body-text;
@@ -37,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .entry {
-  background: rgba(248,248,248,0.8);
+  @include grey-background(0.8);
   border-radius: 10px;
   margin-bottom: 10px;
   .repo-link {
@@ -47,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .entry:hover {
-  background: rgba(248,248,248,0.7);
+  @include grey-background(0.7);
 }
 
 .title {
@@ -59,5 +62,5 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-default {
-  background: rgba(248,248,248,0.8);
+  @include grey-background(0.8);
 }
