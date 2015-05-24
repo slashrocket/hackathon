@@ -9,7 +9,9 @@ $body-text: Merriweather, serif;
 
 body {
   font-family: $body-text;
-  background: blue;
+  background: url(road.jpg);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,6 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo {
   width: 70px;
   height: 70px;
+  margin-top: -15px;
 }
 
 .entry {
@@ -44,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .entry:hover {
-  background: rgba(248,248,248,0.5);
+  background: rgba(248,248,248,0.7);
 }
 
 .title {
