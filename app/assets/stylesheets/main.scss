@@ -1,6 +1,67 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic);
+
+$head-text: "Kaushan Script", cursive;
+$body-text: Merriweather, serif;
+@mixin grey-background($opacity) {
+  background: rgba(248,248,248,$opacity);
+}
+
+body {
+  font-family: $body-text;
+  background: url(road.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $head-text;
+}
+
 .hero {
   background-color: transparent !important;
+}
+
+.hacktext {
+  font-family: $head-text;
+  letter-spacing: -2px;
+}
+
+.navbar-brand {
+  font-family: $head-text;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  margin-top: -15px;
+}
+
+.entry {
+  @include grey-background(0.8);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  .repo-link {
+    float: right;
+    margin-top: 1%;
+  }
+}
+
+.entry:hover {
+  @include grey-background(0.7);
+}
+
+.title {
+  font-size: 2.5em;
+  font-family: $head-text;
+  :hover {
+    text-decoration: none;
+  }
+}
+
+.navbar-default {
+  @include grey-background(0.8);
 }
