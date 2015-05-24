@@ -9,6 +9,11 @@ $body-text: Merriweather, serif;
 
 body {
   font-family: $body-text;
+  background: blue;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $head-text;
 }
 
 .hero {
@@ -26,4 +31,26 @@ body {
 .logo {
   width: 70px;
   height: 70px;
+}
+
+.entry {
+  background: rgba(248,248,248,0.8);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  .repo-link {
+    float: right;
+    margin-top: 1%;
+  }
+}
+
+.entry:hover {
+  background: rgba(248,248,248,0.5);
+}
+
+.title {
+  font-size: 2.5em;
+  font-family: $head-text;
+  :hover {
+    text-decoration: none;
+  }
 }
