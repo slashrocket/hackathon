@@ -20,7 +20,7 @@
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li>
-                <%= link_to "", omniauth_authorize_path("user", "slack"), class: "slack-logo" %>
+                <%= link_to image_tag('slack-grey.svg'), omniauth_authorize_path("user", "slack") %>
           </li>
         <% end %>
       </ul>
