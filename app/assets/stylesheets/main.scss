@@ -6,6 +6,8 @@
 
 $head-text: "Kaushan Script", cursive;
 $body-text: Merriweather, serif;
+$madison: #2D3E50;
+$seagull: #71BDDA;
 @mixin grey-background($opacity) {
   background: rgba(248,248,248,$opacity);
 }
@@ -15,10 +17,7 @@ body {
   background: url(road.jpg);
   background-size: cover;
   background-attachment: fixed;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: $head-text;
+  color: $madison;
 }
 
 .hero {
@@ -37,7 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo {
   width: 70px;
   height: 70px;
-  margin-top: -15px;
+  margin-top: -25px;
 }
 
 .entry {
@@ -48,6 +47,9 @@ h1, h2, h3, h4, h5, h6 {
     float: right;
     margin-top: 1%;
   }
+  .entry-links {
+    color: $seagull;
+  }
 }
 
 .entry:hover {
@@ -56,7 +58,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .title {
   font-size: 2.5em;
-  font-family: $head-text;
   :hover {
     text-decoration: none;
   }
@@ -64,4 +65,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-default {
   @include grey-background(0.8);
+}
+
+a {
+  color: $madison;
+}
+
+.slack-logo:after {
+  content: "";
+  display: inline-block;
+  height: 18px;
+  width: 138px;
+  background: url(slack-grey.svg) no-repeat;
 }
