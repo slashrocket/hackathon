@@ -70,3 +70,11 @@ body {
 a {
   color: $madison;
 }
+
+.slack-logo:after {
+  content: "";
+  display: inline-block;
+  height: 18px;
+  width: 138px;
+  background: url(slack-grey.svg) no-repeat;
+}
