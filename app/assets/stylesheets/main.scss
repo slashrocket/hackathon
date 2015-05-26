@@ -78,3 +78,11 @@ a {
   width: 138px;
   background: url(slack-grey.svg) no-repeat;
 }
+
+.profile-image{
+  position: relative !important;
+  margin-bottom: -15px;
+  top: -7px !important;
+  float: left !important;
+  left: -5px !important;
+}
