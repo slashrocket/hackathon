@@ -1,3 +1,4 @@
+# Controller for Entry model
 class EntriesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
@@ -10,11 +11,11 @@ class EntriesController < ApplicationController
     @entry.user_id = current_user.id
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully submitted.' }
-        format.json { render :show, status: :created, location: @entry }
+        format.html { redirect_to @entry, notice: 'Your entry was submitted.' }
+        # format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
+        # format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
   end

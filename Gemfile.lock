@@ -37,9 +37,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
-    ast (2.0.0)
-    astrolabe (1.3.0)
-      parser (>= 2.2.0.pre.3, < 3.0)
     autoprefixer-rails (5.1.11)
       execjs
       json
@@ -53,6 +50,16 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    brakeman (3.0.3)
+      erubis (~> 2.6)
+      fastercsv (~> 1.5)
+      haml (>= 3.0, < 5.0)
+      highline (~> 1.6.20)
+      multi_json (~> 1.2)
+      ruby2ruby (~> 2.1.1)
+      ruby_parser (~> 3.6.2)
+      sass (~> 3.0)
+      terminal-table (~> 1.4)
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
@@ -77,11 +84,15 @@ GEM
     execjs (2.5.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    fastercsv (1.5.5)
     figaro (1.1.1)
       thor (~> 0.14)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    haml (4.0.6)
+      tilt
     hashie (3.4.1)
+    highline (1.6.21)
     i18n (0.7.0)
     jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
@@ -121,9 +132,6 @@ GEM
     omniauth-slack (2.0.0)
       omniauth-oauth2 (~> 1.2.0)
     orm_adapter (0.5.0)
-    parser (2.2.2.5)
-      ast (>= 1.1, < 3.0)
-    powerpack (0.1.1)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.1)
@@ -153,18 +161,15 @@ GEM
       activesupport (= 4.2.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rainbow (2.0.0)
     rake (10.4.2)
     rdoc (4.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rubocop (0.31.0)
-      astrolabe (~> 1.3)
-      parser (>= 2.2.2.1, < 3.0)
-      powerpack (~> 0.1)
-      rainbow (>= 1.99.1, < 3.0)
-      ruby-progressbar (~> 1.4)
-    ruby-progressbar (1.7.5)
+    ruby2ruby (2.1.4)
+      ruby_parser (~> 3.1)
+      sexp_processor (~> 4.0)
+    ruby_parser (3.6.6)
+      sexp_processor (~> 4.1)
     sass (3.4.14)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -175,6 +180,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sexp_processor (4.5.1)
     spring (1.3.6)
     sprockets (3.1.0)
       rack (~> 1.0)
@@ -183,6 +189,7 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     sqlite3 (1.3.10)
+    terminal-table (1.4.5)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -208,6 +215,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  brakeman
   byebug
   coffee-rails (~> 4.1.0)
   devise
@@ -218,7 +226,6 @@ DEPENDENCIES
   omniauth-slack
   quiet_assets
   rails (= 4.2.1)
-  rubocop
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
