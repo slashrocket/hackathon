@@ -23,4 +23,5 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'brakeman', require: false
+  gem 'rails_best_practices'
 end

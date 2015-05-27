@@ -35,10 +35,6 @@ class EntriesController < ApplicationController
 
   private
 
-  def show_params
-    params.require(:entry).permit(:id)
-  end
-
   def entry_params
     params.require(:entry).permit(:name, :url, :about, :user_id)
   end
