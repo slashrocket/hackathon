@@ -7,6 +7,5 @@ Rails.application.routes.draw do
     delete 'users/sign_out(.:format)' => 'devise/sessions#destroy', as: 'destroy_user_session'
   end
   resources :entries
-  resources :main
   get 'submissions', to: 'main#index'
 end

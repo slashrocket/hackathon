@@ -1,11 +1,11 @@
 <div class="col-md-4 col-md-offset-4">
-  <%= form_for(entry) do |f| %>
-    <% if entry.errors.any? %>
+  <%= form_for(@entry) do |f| %>
+    <% if @entry.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being submitted:</h2>
+        <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being submitted:</h2>
 
         <ul>
-        <% entry.errors.full_messages.each do |message| %>
+        <% @entry.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>

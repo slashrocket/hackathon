@@ -2,13 +2,16 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
+  def index
+    @entries = Entry.order('id DESC')
+  end
+
   def new
     @entry = Entry.new
   end
 
   def create
-    @entry = Entry.new(entry_params)
-    @entry.user_id = current_user.id
+    @entry = current_user.create_entry(entry_params)
     respond_to do |format|
       if @entry.save
         format.html { redirect_to @entry, notice: 'Your entry was submitted.' }
@@ -24,9 +27,6 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
   end
 
-  def index
-  end
-
   def edit
   end
 
@@ -36,6 +36,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:name, :url, :about, :user_id)
+    params.require(:entry).permit(:name, :url, :about)
   end
 end

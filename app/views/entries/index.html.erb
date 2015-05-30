@@ -1,0 +1,9 @@
+<div class="row">
+  <% @entries.each do |e| %>
+      <div class="col-md-10 col-md-offset-1 entry">
+        <span class="title text-left"><%= link_to truncate(e.name, length: 30), entry_url(e), class: "entry-links" %></span>
+        <a href="<%= e.url %>" class="entry-links repo-link"><span class="lead"><%= truncate(e.url, length: 35) %></span></a>
+        <p class="lead text-left"><%= e.about %></p>
+      </div>
+  <% end %>
+</div>
