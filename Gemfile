@@ -24,4 +24,5 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'brakeman', require: false
   gem 'rails_best_practices'
+  gem 'bullet'
 end
