@@ -15,6 +15,7 @@
           <li><%= link_to 'Submit', new_entry_url %></li>
         <% end %>
         <li><%= link_to 'Entries', entries_url %></li>
+        <li><a href="#rulesModal" data-toggle="modal">Rules</a>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
@@ -26,6 +27,6 @@
           </li>
         <% end %>
       </ul>
-    </div><!--/.nav-collapse -->
+    </div>
   </div>
 </nav>

@@ -71,6 +71,10 @@ a {
   color: $madison;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .slack-logo:after {
   content: "";
   display: inline-block;
@@ -85,4 +89,10 @@ a {
   top: -7px !important;
   float: left !important;
   left: -5px !important;
+}
+
+.link {
+  /* text-decoration: none; */
+  /* color: #000; */
+  box-shadow: inset 0 -4px 0 $seagull;
 }
