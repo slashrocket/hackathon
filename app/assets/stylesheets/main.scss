@@ -25,8 +25,10 @@ body {
 }
 
 .hacktext {
+  font-size: 1em;
   font-family: $head-text;
   letter-spacing: -2px;
+  margin-left: -5%;
 }
 
 .navbar-brand {
@@ -92,7 +94,10 @@ a:hover {
 }
 
 .link {
-  /* text-decoration: none; */
-  /* color: #000; */
   box-shadow: inset 0 -4px 0 $seagull;
+}
+
+.theme-text {
+  /* font-family: $head-text; */
+  color: $seagull;
 }
