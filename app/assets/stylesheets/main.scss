@@ -28,17 +28,10 @@ body {
   font-size: 1em;
   font-family: $head-text;
   letter-spacing: -2px;
-  margin-left: -5%;
 }
 
 .navbar-brand {
   font-family: $head-text;
-}
-
-.logo {
-  width: 70px;
-  height: 70px;
-  margin-top: -35px;
 }
 
 .entry {
@@ -98,6 +91,13 @@ a:hover {
 }
 
 .theme-text {
-  /* font-family: $head-text; */
   color: $seagull;
+}
+
+#join {
+  margin-top: 19%;
+}
+
+.join-img {
+  height: 75px;
 }
