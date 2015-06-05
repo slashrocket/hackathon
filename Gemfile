@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
-gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
@@ -16,6 +15,7 @@ gem 'omniauth-slack'
 gem 'figaro'
 gem 'httparty'
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
@@ -25,4 +25,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'rails_best_practices'
   gem 'bullet'
+end
+group :production do
+  gem 'pg'
 end
