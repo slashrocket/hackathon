@@ -14,6 +14,7 @@ class EntriesController < ApplicationController
     @entry = current_user.create_entry(entry_params)
     respond_to do |format|
       if @entry.save
+        DiscourseAPI.new(current_user.username,"Hackathon Participant").assign_badge
         format.html { redirect_to @entry, notice: 'Your entry was submitted.' }
         # format.json { render :show, status: :created, location: @entry }
       else
