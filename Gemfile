@@ -14,7 +14,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-slack'
 gem 'figaro'
-
+gem 'httparty'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
