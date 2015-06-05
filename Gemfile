@@ -14,8 +14,8 @@ gem 'omniauth'
 gem 'omniauth-slack'
 gem 'figaro'
 gem 'httparty'
+gem 'pg'
 group :development, :test do
-  gem 'sqlite3'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
@@ -25,7 +25,4 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'rails_best_practices'
   gem 'bullet'
-end
-group :production do
-  gem 'pg'
 end
