@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
+
 gem 'rails', '4.2.1'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
@@ -15,6 +17,8 @@ gem 'omniauth-slack'
 gem 'figaro'
 gem 'httparty'
 gem 'pg'
+gem 'rails_12factor'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
