@@ -18,6 +18,7 @@ gem 'figaro'
 gem 'httparty'
 gem 'pg'
 gem 'rails_12factor'
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
