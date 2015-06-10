@@ -14,7 +14,7 @@ $seagull: #71BDDA;
 
 body {
   font-family: $body-text;
-  background: url(road.jpg);
+  background: url(image_path('road.jpg'));
   background-size: cover;
   background-attachment: fixed;
   color: $madison;
