@@ -1,13 +1,15 @@
 class DiscourseAPI
   require 'HTTParty'
+  require 'redcarpet'
 
   API_KEY = ENV['DISCOURSE_API_KEY']
   API_USERNAME = ENV['DISCOURSE_API_USERNAME']
   DISCOURSE_URL = ENV['DISCOURSE_URL']
 
-  def initialize(username, badge_name)
+  def initialize(username, badge_name, category)
     @username = username
     @badge_name = badge_name
+    @category = category
   end
 
   def user_in_discourse?
@@ -36,8 +38,22 @@ class DiscourseAPI
     badge['id']
   end
 
+  def create_topic
+    entry = Entry.includes(:user).where(users: {username: @username}).first
+    url = "#{DISCOURSE_URL}posts?api_key=#{API_KEY}&api_username=#{@username}"
+    post = "##{entry.name}\n  Repository url: #{entry.url}\n  About the project:\n  #{entry.about}\n  "
+    html = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true)).render(post)
+    params = {
+      title: entry.name,
+      category: @category,
+      raw: html
+    }
+    HTTParty.post(url, body: params)
+  end
+
   def assign_badge
     create_user unless user_in_discourse?
+    create_topic
     badge_id = get_badge_id
     params = { username: @username, badge_id: badge_id }
     url = "#{DISCOURSE_URL}/user_badges?api_key=#{API_KEY}&api_username=#{API_USERNAME}"
