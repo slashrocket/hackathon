@@ -51,4 +51,5 @@ ActiveRecord::Schema.define(version: 20150524135324) do
   add_index "users", ["entries_id"], name: "index_users_on_entries_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "entries", "users"
 end
