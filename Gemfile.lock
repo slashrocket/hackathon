@@ -189,6 +189,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    redcarpet (3.3.1)
     require_all (1.3.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -260,9 +261,13 @@ DEPENDENCIES
   rails (= 4.2.1)
   rails_12factor
   rails_best_practices
+  redcarpet
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.3

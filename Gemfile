@@ -19,7 +19,7 @@ gem 'httparty'
 gem 'pg'
 gem 'rails_12factor'
 gem 'puma'
-
+gem 'redcarpet'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
