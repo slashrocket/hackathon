@@ -1,0 +1,13 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "styles";
+
+.navbar-header{
+  max-height: 50px !important;
+}
+.nickname{
+  color: white;
+}
+.user-menu {
+  margin-top: 7px !important;
+}

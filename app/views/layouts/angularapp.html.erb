@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="hackathonPanel">
+  <head>
+    <title>slashrocket | Code Launch 2015</title>
+    <%= stylesheet_link_tag    'angularapp', media: 'all' %>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div ng-include="'partials/navbar.html'"></div>
+    <div ng-include="'partials/sidebar.html'"></div>
+      <ui-view></ui-view>
+    <%= javascript_include_tag 'angularapp' %>
+  </body>
+</html>
