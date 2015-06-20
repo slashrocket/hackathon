@@ -1,9 +1,13 @@
 # Controller for Entry model
 class EntriesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-
+  load_and_authorize_resource
   def index
     @entries = Entry.order('id DESC')
+    respond_to do |format|
+      format.html
+      format.json { render json: @entries}
+    end
   end
 
   def new
@@ -16,22 +20,30 @@ class EntriesController < ApplicationController
       if @entry.save
         DiscourseAPI.new(current_user.username, 'Hackathon Participant','Code Launch 2015').assign_badge
         format.html { redirect_to @entry, notice: 'Your entry was submitted.' }
-        # format.json { render :show, status: :created, location: @entry }
+        format.json { render json: @entry }
       else
         format.html { render :new }
-        # format.json { render json: @entry.errors, status: :unprocessable_entity }
+        format.json { render json: {success: false, info: "User wasn't saved"} }
       end
     end
   end
 
   def show
     @entry = Entry.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @entry }
+    end
   end
 
   def edit
   end
 
-  def delete
+  def destroy
+    @entry = Entry.find(params[:id])
+    if current_user.role == 'admin'
+      respond_with Entry.destroy(params[:id])
+    end
   end
 
   private
@@ -39,4 +51,9 @@ class EntriesController < ApplicationController
   def entry_params
     params.require(:entry).permit(:name, :url, :about)
   end
+
+  def default_serializer_options
+    {root: false}
+  end
+
 end
