@@ -14,11 +14,11 @@ class Ability
         can [:update], Entry, user_id: user.id
         can [:basic], User, id: user.id
         can [:read], Setting
-        cannot [:total]. User
-        cannot [:total]. Entry
+        cannot [:total], User
+        cannot [:total], Entry
         cannot [:index], User
         cannot [:update], Setting
-
+        cannot [:firebase_url], Setting
     end
     if !user
       can [:read], Setting

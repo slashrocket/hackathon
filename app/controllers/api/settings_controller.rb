@@ -11,6 +11,13 @@ module Api
       end
     end
 
+    def firebase_url
+      @setting = Setting.firebase_url
+      respond_to do |format|
+        format.json { render json: {value: @setting} }
+      end
+    end
+
     def update
       @setting = Setting.unscoped.find(params[:id])
       @setting.update_attributes(setting_params)

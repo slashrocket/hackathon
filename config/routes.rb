@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :users
     resources :settings, only: [:index, :update]
     get '/totals/total_users' => 'users#total', as: 'users_total'
-
+    get '/settings/firebase' => 'settings#firebase_url', as: 'firebase_url'
   end
   get '/api/totals/total_entries' => 'entries#total', as: 'entries_total'
   get '/admin', to: 'main#admin'

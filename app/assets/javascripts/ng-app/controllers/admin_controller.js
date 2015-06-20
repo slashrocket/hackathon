@@ -1,6 +1,7 @@
 hackathonPanel
   .controller('AdminController', ['$rootScope', '$scope', '$filter', 'users', 'settings', 'Totals', 'Settings',
     function($rootScope, $scope, $filter, users, settings, Totals, Settings) {
+
       $rootScope.users = users;
       $rootScope.total_users = Totals.users();
       $rootScope.total_entries = Totals.entries();
