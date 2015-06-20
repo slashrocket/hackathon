@@ -8,10 +8,13 @@
 //= require angular-svg-round-progressbar
 //= require angular-resource
 //= require angular-cookies
+//= require firebase
+//= require angularfire
 //= require angular-smart-table
 //= require angular-rails-templates
 //= require_tree ./ng-app
 //= require_tree ../templates
+
 $(document).on('ready', function() {
   return $('[ng-app]').each(function() {
     var module;

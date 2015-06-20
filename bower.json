@@ -17,7 +17,9 @@
       "angular-smart-table": "latest",
       "bootstrap-switch": "latest",
       "angular-bootstrap-switch": "latest",
-      "angular-svg-round-progressbar": "latest"
+      "angular-svg-round-progressbar": "latest",
+      "firebase":"2.2.4",
+      "angularfire": "1.1.1"
     },
     "resolutions": {
       "angular": "1.4.1"
