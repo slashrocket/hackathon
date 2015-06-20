@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:slack]
 
+  ROLES = %w[admin user]
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -25,4 +27,19 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def admins
+    ENV['ADMIN_EMAILS'].split(",")
+  end
+
+  before_save do
+    if self.new_record?
+      if admins.include? self.email
+        self.role = 'admin'
+      else
+        self.role = 'user'
+      end
+    end
+  end
+
 end

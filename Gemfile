@@ -14,13 +14,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-slack'
-gem 'figaro'
 gem 'httparty'
 gem 'pg'
 gem 'rails_12factor'
 gem 'puma'
 gem 'redcarpet'
+gem "rails-settings-cached", "0.4.1"
+gem 'cancancan', '~> 1.10'
+gem 'sprockets', '2.12.3' #newwer versions break angularjs
+gem 'bower-rails', '~> 0.9.2'
+gem 'active_model_serializers'
+gem 'angular-rails-templates'
 group :development, :test do
+  gem 'figaro'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
