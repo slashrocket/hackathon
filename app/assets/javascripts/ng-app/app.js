@@ -13,6 +13,11 @@ hackathonPanel = angular
           url: '/admin/dashboard',
           templateUrl: 'panel_dashboard.html',
           controller: 'AdminController',
+          resolve: {
+            users: ['User', function(User){
+              return User.all().$promise;
+            }]
+          },
           onEnter: ['Session', '$rootScope', function(Session, $rootScope){
               Session.get().$promise.then(function(data){
                 if (data.user.role == "admin"){$rootScope.user = data.user}
