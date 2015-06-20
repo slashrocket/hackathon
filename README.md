@@ -11,5 +11,6 @@
         * DISCOURSE_API_USERNAME
         * DISCOURSE_URL
 ### Assign Admin users
-        Set the following enviromental value(format: 'admin1@example.com,admin2@example.com'):
+        Set the following enviromental value:
         * ADMIN_EMAILS
+        (format: 'admin1@example.com,admin2@example.com')
