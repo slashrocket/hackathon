@@ -13,6 +13,9 @@
       <ul class="nav navbar-nav">
         <% if current_user %>
           <li><%= link_to 'Submit', new_entry_url %></li>
+          <% if current_user.role == 'admin' %>
+            <li><%= admin_button %></li>
+          <% end %>
         <% end %>
         <li><%= link_to 'Entries', entries_url %></li>
         <li><a href="#rulesModal" data-toggle="modal">Rules</a>
@@ -24,7 +27,7 @@
         <% else %>
           <li>
                 <!-- Add in when ready for signups: omniauth_authorize_path("user", "slack") -->
-                <%= link_to image_tag('slack-grey.svg') %>
+                <%= link_to image_tag('slack-grey.svg'), omniauth_authorize_path("user", "slack") %>
           </li>
         <% end %>
       </ul>
