@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css";
 @import "styles";
 
 .navbar-header{
@@ -10,4 +11,13 @@
 }
 .user-menu {
   margin-top: 7px !important;
+}
+.large-icon{
+  font-size: 4em !important;
+  line-height: .89em !important;
+  vertical-align: -15%;
+  text-align: center;
+}
+.bootstrap-switch-wrapper{
+  margin: 50px !important;
 }

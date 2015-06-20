@@ -14,6 +14,13 @@ class EntriesController < ApplicationController
     @entry = Entry.new
   end
 
+  def total
+    @total = Entry.count
+    respond_to do |format|
+      format.json { render json: {value: @total} }
+    end
+  end
+
   def create
     @entry = current_user.create_entry(entry_params)
     respond_to do |format|

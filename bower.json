@@ -14,7 +14,9 @@
       "angular-ui-router": "~0.2.15",
       "angular-bootstrap":"0.13.0",
       "angular-cookies": "~1.2.21",
-      "angular-smart-table": "latest"
+      "angular-smart-table": "latest",
+      "bootstrap-switch": "latest",
+      "angular-bootstrap-switch": "latest"
     },
     "resolutions": {
       "angular": "1.4.1"

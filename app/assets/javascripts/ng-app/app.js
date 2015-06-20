@@ -4,7 +4,8 @@ hackathonPanel = angular
     'ui.router',
     'templates',
     'ngCookies',
-    'smart-table'
+    'smart-table',
+    'frapontillo.bootstrap-switch'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -16,6 +17,9 @@ hackathonPanel = angular
           resolve: {
             users: ['User', function(User){
               return User.all().$promise;
+            }],
+            settings: ['Settings', function(Settings){
+              return Settings.all().$promise;
             }]
           },
           onEnter: ['Session', '$rootScope', function(Session, $rootScope){
@@ -31,6 +35,21 @@ hackathonPanel = angular
           resolve: {
             users: ['User', function(User){
               return User.all().$promise;
+            }]
+          },
+          onEnter: ['Session', '$rootScope', function(Session, $rootScope){
+              Session.get().$promise.then(function(data){
+                if (data.user.role == "admin"){$rootScope.user = data.user}
+              });
+          }]
+        })
+        .state('entries', {
+          url: '/admin/entries',
+          templateUrl: 'panel_entries.html',
+          controller: 'EntriesController',
+          resolve: {
+            entries: ['Entry', function(Entry){
+              return Entry.all().$promise;
             }]
           },
           onEnter: ['Session', '$rootScope', function(Session, $rootScope){

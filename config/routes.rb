@@ -9,10 +9,13 @@ Rails.application.routes.draw do
     post '/api/check/is_admin' => 'users/sessions#is_admin', as: 'is_admin'
   end
   resources :entries
-  get '/admin', to: 'main#admin'
-  get '/admin/*path', to: 'main#admin'
   namespace :api, defaults: { format: :json } do
     resources :users
     resources :settings, only: [:index, :update]
+    get '/totals/total_users' => 'users#total', as: 'users_total'
+
   end
+  get '/api/totals/total_entries' => 'entries#total', as: 'entries_total'
+  get '/admin', to: 'main#admin'
+  get '/admin/*path', to: 'main#admin'
 end

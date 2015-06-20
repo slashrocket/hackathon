@@ -1,5 +1,39 @@
 hackathonPanel
-  .controller('AdminController', ['$rootScope', 'users',
-    function($rootScope, users) {
+  .controller('AdminController', ['$rootScope', '$scope', '$filter', 'users', 'settings', 'Totals', 'Settings',
+    function($rootScope, $scope, $filter, users, settings, Totals, Settings) {
       $rootScope.users = users;
+      $rootScope.total_users = Totals.users();
+      $rootScope.total_entries = Totals.entries();
+      
+      sign_up = $filter('filter')(settings, {var: 'sign_up'});
+      submit_entry = $filter('filter')(settings, {var: 'submit_entry'});
+      
+      $rootScope.sign_up = sign_up[0]
+      $rootScope.submit_entry = submit_entry[0]
+
+      $scope.$watch('$rootScope.sign_up.value', function(){
+        Settings.update($rootScope.sign_up);
+      });
+
+      $scope.$watch('$rootScope.submit_entry.value', function(){
+        Settings.update($rootScope.submit_entry);
+      });
+
+      $rootScope.sign_up_value = function(){
+        if ($rootScope.sign_up.value){
+          return "Enabled"
+        }
+        else{
+          return "Disabled"
+        };
+      };
+
+      $rootScope.submit_entry_value = function(){
+        if ($rootScope.submit_entry.value){
+          return "Enabled"
+        }
+        else{
+          return "Disabled"
+        };
+      };
   }]);

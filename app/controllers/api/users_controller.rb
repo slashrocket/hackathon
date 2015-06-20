@@ -11,6 +11,13 @@ module Api
       end
     end
 
+    def total
+      @total = User.count
+      respond_to do |format|
+        format.json { render json: {value: @total } }
+      end
+    end
+
     private
 
     def default_serializer_options
