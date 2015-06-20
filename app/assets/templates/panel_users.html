@@ -17,13 +17,13 @@
       <table st-table="users" st-table-raw="users" class="table table-striped">
         <thead>
         <tr>
-          <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+          <th colspan="5"><input st-search="" id="user_search" ng-model="search" class="form-control" placeholder="global search ..." type="text"/></th>
         </tr>
         <tr>
           <th st-sort="firstName">Username</th>
           <th st-sort="lastName">Role</th>
           <th st-sort="birthDate">E-mail</th>
-          <th st-sort="balance">Entry</th>
+          <th st-sort="balance">Entry name</th>
         </tr>
         </thead>
         <tbody>
@@ -31,7 +31,7 @@
           <td>{{user.username}}</td>
           <td>{{user.role}}</td>
           <td>{{user.email}}</td>
-          <td>{{user.entries_id || 'empty'}}</td>
+          <td><a href="" ui-sref="entries({search: user.entry.name})">{{user.entry.name}}</a></td>
           <td>
           <button type="button" ng-click="removeItem(user)" class="btn btn-sm btn-danger">
             <i class="fa fa-user-times">

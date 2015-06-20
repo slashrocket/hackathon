@@ -4,6 +4,7 @@ hackathonPanel
       $rootScope.users = users;
       $rootScope.total_users = Totals.users();
       $rootScope.total_entries = Totals.entries();
+      
       $scope.parseInt = parseInt;
       sign_up = $filter('filter')(settings, {var: 'sign_up'});
       submit_entry = $filter('filter')(settings, {var: 'submit_entry'});

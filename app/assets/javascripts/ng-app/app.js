@@ -30,12 +30,15 @@ hackathonPanel = angular
           }]
         })
         .state('users', {
-          url: '/admin/users',
+          url: '/admin/users?search',
           templateUrl: 'panel_users.html',
           controller: 'UsersController',
           resolve: {
             users: ['User', function(User){
               return User.all().$promise;
+            }],
+            query: ['$stateParams', function($stateParams){
+              return $stateParams;
             }]
           },
           onEnter: ['Session', '$rootScope', function(Session, $rootScope){
@@ -45,12 +48,15 @@ hackathonPanel = angular
           }]
         })
         .state('entries', {
-          url: '/admin/entries',
+          url: '/admin/entries?search',
           templateUrl: 'panel_entries.html',
           controller: 'EntriesController',
           resolve: {
             entries: ['Entry', function(Entry){
               return Entry.all().$promise;
+            }],
+            query: ['$stateParams', function($stateParams){
+              return $stateParams;
             }]
           },
           onEnter: ['Session', '$rootScope', function(Session, $rootScope){

@@ -23,7 +23,7 @@
           <th st-sort="balance">User</th>
         </tr>
         <tr>
-          <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+          <th colspan="5"><input st-search="" id="entry_search" ng-model="search" class="form-control" placeholder="global search ..." type="text"/></th>
         </tr>
         </thead>
         <tbody>
@@ -31,7 +31,7 @@
           <td>{{entry.name}}</td>
           <td>{{entry.url}}</td>
           <td>{{entry.about}}</td>
-          <td>{{entry.user}}</td>
+          <td><a href="" ui-sref="users({search: entry.user_name})">{{entry.user_name}}</a></td>
           <td>
           <button type="button" ng-click="removeItem(entry)" class="btn btn-sm btn-danger">
             <i class="fa fa-user-times">
