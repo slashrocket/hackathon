@@ -5,7 +5,8 @@ hackathonPanel = angular
     'templates',
     'ngCookies',
     'smart-table',
-    'frapontillo.bootstrap-switch'
+    'frapontillo.bootstrap-switch',
+    'angular-svg-round-progress'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {

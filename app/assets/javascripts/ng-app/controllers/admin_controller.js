@@ -4,20 +4,21 @@ hackathonPanel
       $rootScope.users = users;
       $rootScope.total_users = Totals.users();
       $rootScope.total_entries = Totals.entries();
-      
+      $scope.parseInt = parseInt;
       sign_up = $filter('filter')(settings, {var: 'sign_up'});
       submit_entry = $filter('filter')(settings, {var: 'submit_entry'});
       
       $rootScope.sign_up = sign_up[0]
       $rootScope.submit_entry = submit_entry[0]
 
-      $scope.$watch('$rootScope.sign_up.value', function(){
+      $rootScope.$watch('sign_up.value', function(){
         Settings.update($rootScope.sign_up);
       });
 
-      $scope.$watch('$rootScope.submit_entry.value', function(){
+      $rootScope.$watch('submit_entry.value', function(){
         Settings.update($rootScope.submit_entry);
       });
+
 
       $rootScope.sign_up_value = function(){
         if ($rootScope.sign_up.value){

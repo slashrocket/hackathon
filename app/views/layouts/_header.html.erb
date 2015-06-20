@@ -12,7 +12,9 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <% if current_user %>
+          <% if Setting.submit_entry %>
           <li><%= link_to 'Submit', new_entry_url %></li>
+          <% end %>
           <% if current_user.role == 'admin' %>
             <li><%= admin_button %></li>
           <% end %>
@@ -25,10 +27,9 @@
           <p class="navbar-text"> <%= user_avatar(current_user) %> <%= current_user.username %></p>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li>
-                <!-- Add in when ready for signups: omniauth_authorize_path("user", "slack") -->
-                <%= link_to image_tag('slack-grey.svg'), omniauth_authorize_path("user", "slack") %>
-          </li>
+          <% if Setting.sign_up %>
+          <li><%= link_to image_tag('slack-grey.svg'), omniauth_authorize_path("user", "slack") %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>

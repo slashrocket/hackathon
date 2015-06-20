@@ -5,6 +5,7 @@
 //= require angular-bootstrap
 //= require bootstrap-switch/dist/js/bootstrap-switch.min.js
 //= require angular-bootstrap-switch
+//= require angular-svg-round-progressbar
 //= require angular-resource
 //= require angular-cookies
 //= require angular-smart-table

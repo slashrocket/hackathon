@@ -25,6 +25,7 @@ gem 'sprockets', '2.12.3' #newwer versions break angularjs
 gem 'bower-rails', '~> 0.9.2'
 gem 'active_model_serializers'
 gem 'angular-rails-templates'
+gem 'angular_rails_csrf'
 group :development, :test do
   gem 'figaro'
   gem 'byebug'
