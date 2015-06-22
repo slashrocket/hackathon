@@ -25,7 +25,7 @@ class EntriesController < ApplicationController
     @entry = current_user.create_entry(entry_params)
     respond_to do |format|
       if @entry.save
-        DiscourseWorker.perform_async(current_user.username, 'Hackathon Participant','Code Launch 2015')
+        DiscourseWorker.perform_async(current_user.username, 'Hackathon Participant', 'Code Launch 2015')
         format.html { redirect_to @entry, notice: 'Your entry was submitted.' }
         format.json { render json: @entry }
       else
