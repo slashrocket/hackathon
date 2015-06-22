@@ -40,7 +40,7 @@ class DiscourseAPI
 
   def create_topic
     entry = Entry.includes(:user).where(users: {username: @username}).first
-    url = "#{DISCOURSE_URL}posts?api_key=#{API_KEY}&api_username=#{@username}"
+    url = "#{DISCOURSE_URL}/posts?api_key=#{API_KEY}&api_username=#{@username}"
     post = "##{entry.name}\n  Repository url: #{entry.url}\n  About the project:\n  #{entry.about}\n  "
     html = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true)).render(post)
     params = {
