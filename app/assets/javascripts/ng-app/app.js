@@ -66,6 +66,7 @@ hackathonPanel = angular
               });
           }]
         });
+      $urlRouterProvider.otherwise('dashboard');
       $locationProvider.html5Mode({enabled: true, requireBase: false, rewriteLinks: true});
     }]
   );
