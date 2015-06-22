@@ -14,3 +14,9 @@
         Set the following enviromental value:
         * ADMIN_EMAILS
         (format: 'admin1@example.com,admin2@example.com')
+
+
+#### How to Start the app
+        Run:
+        bundle exec sidekiq
+        bundle exec rails server
