@@ -1,5 +1,5 @@
 class DiscourseAPI
-  require 'HTTParty'
+  require 'httparty'
   require 'redcarpet'
 
   API_KEY = ENV['DISCOURSE_API_KEY']
