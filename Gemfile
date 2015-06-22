@@ -26,6 +26,7 @@ gem 'bower-rails', '~> 0.9.2'
 gem 'active_model_serializers'
 gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
+gem 'sidekiq'
 group :development, :test do
   gem 'figaro'
   gem 'byebug'
