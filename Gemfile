@@ -27,6 +27,7 @@ gem 'active_model_serializers'
 gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 gem 'sidekiq'
+gem 'sinatra', :require => nil
 group :development, :test do
   gem 'figaro'
   gem 'byebug'

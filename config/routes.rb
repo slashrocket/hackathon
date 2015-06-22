@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root 'main#home'
   devise_for :users,
@@ -18,4 +20,7 @@ Rails.application.routes.draw do
   get '/api/totals/total_entries' => 'entries#total', as: 'entries_total'
   get '/admin', to: 'main#admin'
   get '/admin/*path', to: 'main#admin'
+  authenticate :user, lambda { |user| user.role == 'admin' } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
