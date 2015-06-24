@@ -21,13 +21,14 @@ gem 'puma'
 gem 'redcarpet'
 gem "rails-settings-cached", "0.4.1"
 gem 'cancancan', '~> 1.10'
-gem 'sprockets', '2.12.3' #newwer versions break angularjs
+gem 'sprockets', '2.12.3' # newer versions break angularjs
 gem 'bower-rails', '~> 0.9.2'
 gem 'active_model_serializers'
 gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 gem 'sidekiq'
 gem 'sinatra', :require => nil
+gem 'newrelic_rpm'
 group :development, :test do
   gem 'figaro'
   gem 'byebug'
