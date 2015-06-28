@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:slack]
-
+  belongs_to :team
   ROLES = %w[admin user]
 
   def self.from_omniauth(auth)
