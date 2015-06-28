@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628095345) do
+ActiveRecord::Schema.define(version: 20150628121926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,11 @@ ActiveRecord::Schema.define(version: 20150628095345) do
     t.text     "name"
     t.text     "url"
     t.text     "about"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "ownable_id"
+    t.string   "ownable_type"
   end
-
-  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
 
   create_table "settings", force: :cascade do |t|
     t.string   "var",                   null: false
@@ -62,12 +61,9 @@ ActiveRecord::Schema.define(version: 20150628095345) do
     t.string   "username"
     t.string   "image"
     t.string   "role"
-    t.integer  "team_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
 
-  add_foreign_key "entries", "users"
 end
