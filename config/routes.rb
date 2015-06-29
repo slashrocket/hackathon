@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   root 'main#home'
+  get '/rules', to: 'main#rules', as: 'rules'
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks' },
              skip:        [:sessions, :registrations]

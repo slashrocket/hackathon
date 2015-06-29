@@ -17,7 +17,7 @@
           <% end %>
         <% end %>
         <li><%= link_to 'Entries', entries_url %></li>
-        <li><a href="#rulesModal" data-toggle="modal">Rules</a></li>
+        <li><%= link_to 'Rules', rules_url %></li>
         <li><%= link_to 'Teams', teams_url %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -36,39 +36,3 @@
     </div>
   </div>
 </nav>
-
-<div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Code Launch Rules</h4>
-      </div>
-      <div class="modal-body">
-        <p>This is an individual hackathon, meaning there will be no team participation. You are more than welcome to ask your peers for debugging help, but all commits to the repository must be from you.</p>
-        <p>Each participant must be a current member of the <a class="link" href="https://slashrocket.io">slashrocket community</a>. You will log in using your Slack credentials and submit your entry to this site.</p>
-        <hr>
-        <p><strong>Your project must:</strong></p>
-        <ul>
-          <li>contain nothing illegal or malicious.</li>
-          <li>be your original work. That goes for code, design, sounds, etc. You can use third-party libraries as long as you give appropriate credit and citations in your repo's README. Make sure all used assets are freely available to the public.</li>
-          <li>be open source. It must be deployed and hosted somewhere that the community can view and you must provide a link to the code repository.</li>
-        </ul>
-        <hr>
-        <p><strong>Voting</strong></p>
-        <p>Community voting will take place in the <a class="link" href="https://community.slashrocket.io">slashrocket community forum</a>. Make sure you are signed up through Slack otherwise you may not be eligible to vote. It will begin 24 hours after the hackathon has ended and will be open for 7 days.
-        <hr>
-        <p><strong>Prizes & Eligibility</strong></p>
-        <p>Any member of slashrocket may participate. However, only non-admin members may win a prize. If winning a prize is illegal in your area of residence, we will find a less unlawful way to reward you.</p>
-        <p>Judges Vote Winner: [Prize]</p>
-        <p>Community Vote Winner: [Prize]</p>
-        <p>Raffle Winner: [Prize]</p>
-        <hr>
-        <p><strong><em>Failure to comply with these rules will result in your disqualification.</em></strong></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>

@@ -1,8 +1,11 @@
 # Controller for Main model.
 class MainController < ApplicationController
-  before_filter :authenticate_user!, except: [:home]
+  before_filter :authenticate_user!, except: [:home, :rules]
 
   def home
+  end
+  
+  def rules
   end
 
   def admin
