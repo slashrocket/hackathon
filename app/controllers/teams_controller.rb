@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index]
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:new, :create]
 
   def index
     @teams = Team.all
