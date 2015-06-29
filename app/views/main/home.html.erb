@@ -1,16 +1,33 @@
-<div class="jumbotron hero">
-  <h1 class="text-center"><span class="hacktext">Code Launch 2015</span></h1>
-  <h2 class="text-center">July 11-19, 2015</h2>
-  <h3 class="text-center">With a theme of:</h3>
-  <h2 class="text-center theme-text"><em>Improve Your Daily Life</em></h2>
+<div class="row">
+  <div class="jumbotron hero col-md-10 col-md-offset-1">
+    <h3 class="theme-text"><em>Team Slashrocket Presents:</em></h3>
+    <h1 class="text-center hacktext"><span class="hacktext">Code Launch 2015</span></h1>
+    <div align="center"><%= image_tag 'launch2015.png', width: "40%", height: "40%" %></div>
+    <h2 class="text-center hacktitle">A Community Hackathon</h2>
+    <h2 class="text-center hackdate theme-text">July 11-19, 2015</h2>
+    <h3 class="text-center">With a theme of:</h3>
+    <h2 class="text-center theme-text"><em>Improve Your Daily Life</em></h2>
+  </div>
 </div>
-<div id="sponsors" class="col-md-8 col-md-offset-2">
-  <h2 class="text-center">Sponsored By:</h2>
-  <div class="col-md-4 col-md-offset-2"><%=link_to( (image_tag "nitrous.png", class: "img img-responsive", title: "Nitrous"), "https://nitrous.io", class: "img img-responsive", target: "_blank") %></div>
-  <div class="col-md-4"><%=link_to( (image_tag "octopus.png", class: "img img-responsive", title: "Octopus Creative"), "http://octopuscreative.com", class: "img img-responsive", target: "_blank") %></div>
-  <!-- <div class="col-md-3"></div> -->
-  <!-- <div class="col-md-3"></div> -->
+<div class="row">
+  <div id="calltoaction" align="center">
+    <h2 class="text-center">Getting started...</h2>
+    <%= link_to "View Current Teams", teams_url, class: 'btn btn-lg btn-default' %> <%= link_to "Register", omniauth_authorize_path("user", "slack"), class: 'btn btn-lg btn-primary' %>
+  </div>
 </div>
-<div class="col-md-8 col-md-offset-2">
-  <h3 class="text-center lead">Not a member of our community?<br><a href="https://slashrocket.io" target="_blank"><%= image_tag "join.png", class: "img img-responsive" %></a></h3>
+<div class="row sponsors">
+  <div id="sponsors" class="col-md-8 col-md-offset-2" align="center">
+   <h2 class="text-center">With Sponsorship From:</h2>
+   <div class="col-md-2 col-md-offset-4"><%=link_to( (image_tag "nitrous.png", class: "img img-responsive", title: "Nitrous"), "https://nitrous.io", class: "img img-responsive", target: "_blank") %></div>
+   <div class="col-md-2"><%=link_to( (image_tag "octopus.png", class: "img img-responsive", title: "Octopus Creative"), "http://octopuscreative.com", class: "img img-responsive", target: "_blank") %></div>
+  </div>
+</div>
+<div class="row joinslashrocket">
+  <div class="col-md-8 col-md-offset-2" align="center">
+    <h3 class="lead">
+      Not a member of our community?
+      <br/><br/>
+      <a href="https://slashrocket.io" target="_blank"><%= image_tag "join.png", class: "img img-responsive", width: "75%", height: "75%" %></a>
+    </h3>
+  </div>
 </div>

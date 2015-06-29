@@ -21,13 +21,16 @@ body {
 }
 
 .hero {
+  padding-top: 0px;
   background-color: transparent !important;
 }
 
 .hacktext {
-  font-size: 1em;
+  font-size: 1.7em;
   font-family: $head-text;
   letter-spacing: -2px;
+  margin-top: -5px;
+  
 }
 
 .navbar-brand {
@@ -94,10 +97,33 @@ a:hover {
   color: $seagull;
 }
 
-#sponsors {
-  margin-top: -6%;
-}
 
 .main {
   padding-top: 75px;
+}
+
+#calltoaction {
+  background-color: rgba(255,255,255,0.4);
+  padding-top: 25px;
+  padding-bottom: 70px;
+  width: 100%;
+  margin-top: -15px;
+}
+
+.hackdate {
+  padding-top: 0px;
+}
+
+#sponsors {
+  margin-top: 15px;
+}
+
+.sponsors {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.joinslashrocket {
+  margin-top: 35px;
+  background-color: rgba(255,255,255,0.4);
 }
