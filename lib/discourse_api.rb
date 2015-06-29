@@ -39,12 +39,14 @@ class DiscourseAPI
   end
 
   def create_topic
-    entry = Entry.includes(:user).where(users: {username: @username}).first
     url = "#{DISCOURSE_URL}/posts?api_key=#{API_KEY}&api_username=#{@username}"
-    if entry.ownable.instance_of? User
+    user = User.includes(:entry, team: :entry).find_by_username(@username)
+    if user.entry
+      entry = user.entry
       post = "##{entry.name}\n  Repository url: #{entry.url}\n  About the project:\n  #{entry.about}\n  "
-    elsif entry.ownable.instance_of? Team
-      user_list = team.users.collect{|u| "@#{u.username}"}.join('/n  ')
+    elsif user.team.entry
+      entry = user.team.entry
+      user_list = user.team.users.collect{|u| "@#{u.username}"}.join('/n  ')
       post = "##{entry.name}\n  Repository url: #{entry.url}\n  Team Members:\n  #{user_list}\n  About the project:\n  #{entry.about}\n  "
     end
     
