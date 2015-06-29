@@ -3,11 +3,11 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   root 'main#home'
   get '/rules', to: 'main#rules', as: 'rules'
+  get '/welcome', to: 'main#welcome', as: 'welcome'
   devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' },
-             skip:        [:sessions, :registrations]
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
-    delete 'users/sign_out(.:format)' => 'devise/sessions#destroy', as: 'destroy_user_session'
+    #delete 'users/sign_out(.:format)' => 'devise/sessions#destroy', as: 'destroy_user_session'
     get '/api/current_user' => 'users/sessions#show_current_user', as: 'show_current_user'
     post '/api/check/is_admin' => 'users/sessions#is_admin', as: 'is_admin'
   end
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get '/admin', to: 'main#admin'
   get '/admin/*path', to: 'main#admin'
   get '/teams', to: 'teams#index', as: 'teams'
-  get '/teams/:id', to: 'teams#show', as: 'user_team'
+  get '/team/:id', to: 'teams#show', as: 'user_team'
   get '/teams/new', to: 'teams#new', as: 'new_team'
   authenticate :user, lambda { |user| user.role == 'admin' } do
     mount Sidekiq::Web => '/sidekiq'

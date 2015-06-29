@@ -7,6 +7,9 @@ class MainController < ApplicationController
   
   def rules
   end
+  
+  def welcome
+  end
 
   def admin
     authorize!(:admin, :main)
