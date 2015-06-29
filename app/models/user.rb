@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:slack]
-  has_one :entry, as: :ownable
   has_one :team_member
   has_one :team, through: :team_member
   ROLES = %w[admin user]

@@ -5,15 +5,15 @@ class MainController < ApplicationController
   def home
     if current_user
       if current_user.team
-        return redirect_to user_team_url(current_user.team.id)
+        redirect_to user_team_url(current_user.team.id)
       else
-        return redirect_to welcome_path
+        redirect_to welcome_path
       end
     end
   end
   
   def homeregistered
-    return render 'home.html.erb'
+    render :home
   end
   
   def rules
