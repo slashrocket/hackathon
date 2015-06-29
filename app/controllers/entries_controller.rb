@@ -22,11 +22,7 @@ class EntriesController < ApplicationController
   end
 
   def create
-    if current_user.team.nil?
-      @entry = current_user.create_entry(entry_params)
-    else
-      @entry = current_user.team.create_entry(entry_params)
-    end
+    @entry = current_user.team.create_entry(entry_params)
     respond_to do |format|
       if @entry.save
         DiscourseWorker.perform_async(current_user.username, 'Hackathon Participant', 'Code Launch 2015')
