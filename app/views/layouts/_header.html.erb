@@ -23,7 +23,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <% if current_user.team_id %>
+          <% if current_user.team %>
             <li><%= link_to "Your Team", user_team_url(current_user.team_id) %></li>
           <% else %>
             <li><%= link_to "Create Your Team", new_team_url %></li>

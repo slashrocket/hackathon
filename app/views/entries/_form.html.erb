@@ -11,10 +11,12 @@
         </ul>
       </div>
     <% end %>
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, autofocus: true, required: true, class: "form-control" %>
-    </div>
+    <% if current_user.team_id.nil? %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, required: true, class: "form-control" %>
+      </div>
+    <% end %>
     <div class="form-group">
       <%= f.label :url %>
       <%= f.text_field :url, required: true, class: "form-control" %>

@@ -4,8 +4,8 @@ class MainController < ApplicationController
 
   def home
     if current_user
-      if current_user.team_id
-        return redirect_to user_team_url(current_user.team_id)
+      if current_user.team
+        return redirect_to user_team_url(current_user.team.id)
       else
         return redirect_to welcome_path
       end
