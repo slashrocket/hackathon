@@ -11,11 +11,11 @@ class Ability
     else
         can [:read], Entry
         can [:create], Entry
-        can [:update], Entry, team: { user_id: user.id }
-        can [:uodate], Entry, user: { id: user.id }
+        can [:update], Entry, user: { id: user.id }
         can [:basic], User, id: user.id
         can [:read], Team
-        can [:update], Team, id: user.team_id
+        can [:create], Team
+        can [:update], Team, owner_id: user.id
         cannot [:destroy], Team
         can [:read], Setting
         cannot [:total], User
