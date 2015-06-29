@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/admin', to: 'main#admin'
   get '/admin/*path', to: 'main#admin'
   get '/teams', to: 'teams#index', as: 'teams'
+  get '/teams/:id', to: 'teams#show', as: 'user_team'
+  get '/teams/new', to: 'teams#new', as: 'new_team'
   authenticate :user, lambda { |user| user.role == 'admin' } do
     mount Sidekiq::Web => '/sidekiq'
   end
