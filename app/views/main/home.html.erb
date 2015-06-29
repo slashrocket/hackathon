@@ -9,10 +9,12 @@
     <h2 class="text-center theme-text"><em>Improve Your Daily Life</em></h2>
   </div>
 </div>
-<div class="row">
-  <div id="calltoaction" align="center">
+<div class="row" id="calltoaction">
+  <div class="col-md-8 col-md-offset-2" align="center">
+    <h2><small>In the past few months, <em>slashrocket</em> has grown from a small group of people discussing web development to a thriving community of developers. To help celebrate, <b>we're hosting our first hackathon</b>! The hackathon is for <b>web applications of any language or framework</b> and is open to <b>developers of all skill levels</b>. <em>Everyone will have a chance to win</em>!</small></h2>
+    <hr/>
     <h2 class="text-center">Getting started...</h2>
-    <%= link_to "View Current Teams", teams_url, class: 'btn btn-lg btn-default' %> <%= link_to "Register", omniauth_authorize_path("user", "slack"), class: 'btn btn-lg btn-primary' %>
+    <%= link_to "View Teams", teams_url, class: 'btn btn-lg btn-default viewteams' %> <%= link_to "Register", omniauth_authorize_path("user", "slack"), class: 'btn btn-lg btn-primary' %>
   </div>
 </div>
 <div class="row sponsors">
