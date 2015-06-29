@@ -3,6 +3,17 @@ class MainController < ApplicationController
   before_filter :authenticate_user!, except: [:home, :rules]
 
   def home
+    if current_user
+      if current_user.team_id
+        return redirect_to user_team_url(current_user.team_id)
+      else
+        return redirect_to welcome_path
+      end
+    end
+  end
+  
+  def homeregistered
+    return render 'home.html.erb'
   end
   
   def rules

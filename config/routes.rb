@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   root 'main#home'
+  get '/home', to: 'main#homeregistered', as: 'home'
   get '/rules', to: 'main#rules', as: 'rules'
   get '/welcome', to: 'main#welcome', as: 'welcome'
   devise_for :users,
