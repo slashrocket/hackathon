@@ -20,10 +20,8 @@ ActiveRecord::Schema.define(version: 20150629111010) do
     t.string   "name"
     t.string   "url"
     t.text     "about"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "ownable_id"
-    t.string   "ownable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "settings", force: :cascade do |t|
@@ -41,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150629111010) do
     t.integer  "user_id"
     t.integer  "team_id"
     t.boolean  "accepted",   default: false
+    t.boolean  "owner",      default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -50,9 +49,9 @@ ActiveRecord::Schema.define(version: 20150629111010) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.text     "description"
   end
 
   create_table "users", force: :cascade do |t|

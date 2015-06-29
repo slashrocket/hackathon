@@ -4,7 +4,7 @@ class CreateTeamMembers < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.references :team, index: true, foreign_key: true
       t.boolean :accepted, default: false
-
+      t.boolean :owner, default: false
       t.timestamps null: false
     end
   end
