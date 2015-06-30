@@ -12,7 +12,11 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.includes(:owner, team_members:[:user]).find(params[:id])
+    if @team.owner == current_user || current_user.role == 'admin'
+      @team = Team.includes(:owner, team_members:[:user]).find(params[:id])
+    else
+      @team = Team.includes(:owner, team_members:[:user]).where(team_members: {accepted: true}).find(params[:id])
+    end
     respond_to do |format|
       format.html
       format.json { render json: @team }
@@ -28,8 +32,7 @@ class TeamsController < ApplicationController
   end
 
   def create
-    team_params.merge(owner_id: current_user.id)
-    @team = Team.new(team_params)
+    @team = Team.new(team_params.merge(owner_id: current_user.id))
     if @team.save
       @team.users << current_user
       respond_to do |format|
@@ -60,6 +63,6 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name, :description, :used, :location)
+    params.require(:team).permit(:name, :description, :used, :location, :owner_id)
   end
 end
