@@ -1,6 +1,6 @@
 # Entry model
 class Entry < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :team
 
   validates_presence_of :name
   validates_presence_of :url
