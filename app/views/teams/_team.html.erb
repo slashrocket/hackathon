@@ -1,7 +1,8 @@
+<% if team.owner_id and team.team_members.count > 0%>
 <div id="team_<%= team.id %>" class="team">
   <h2><%= link_to team.name, user_team_path(team) %></h2>
   <h4><em><%= team.description %></em></h4>
   <small><%= team.used %></small>
 </div>
-
 <hr>
+<% end %>
