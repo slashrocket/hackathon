@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
+    @team = Team.includes(:owner, team_members:[:user]).find(params[:id])
     respond_to do |format|
       format.html
       format.json { render json: @team }
@@ -27,10 +27,17 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new(team_param)
+    team_params.merge(owner_id: current_user.id)
+    @team = Team.new(team_params)
     if @team.save
-      flash[:notice] = "#{@team.name} Created!"
-      return redirect_to user_team_path(@team.id)
+      @team.users << current_user
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "#{@team.name} Created!"
+          redirect_to user_team_path(@team.id)
+        end
+        format.json { render json: @team }
+      end
     else
       flash[:alert] = "Failed to create team"
       render new
@@ -51,7 +58,7 @@ class TeamsController < ApplicationController
 
   private
 
-  def team_param
-    params.require(:team).permit(:name, :user_id, :description, :used, :location)
+  def team_params
+    params.require(:team).permit(:name, :description, :used, :location)
   end
 end
