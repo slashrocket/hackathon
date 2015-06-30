@@ -1,8 +1,8 @@
 <h1 align="center">Create your coding dream team</h1>
 <hr/>
 <div class="row">
-  <div class="col-md-6 col-md-offset-1">
-    <div class="panel panel-default">
+  <div class="col-md-6 col-md-offset-1" align="center">
+    <div class="panel panel-default" align="left">
       <div class="panel-body">
         <h3>Tips and Tricks</h3>
         <hr/>
@@ -16,9 +16,10 @@
         </ul>
       </div>
     </div>
+    <%= image_tag "rocketprogress.png", width: "35%", height: "35%" %>
   </div>
   <div class="col-md-4">
-    <%= form_for @team do |f| %>
+    <%= form_for @team, url: create_team_path do |f| %>
       <div class="form-group">
         <%= f.label :name, "Team Name (required)" %>
         <%= f.text_field :name, placeholder: "The Slashrockets", class: "form-control", required: true %>

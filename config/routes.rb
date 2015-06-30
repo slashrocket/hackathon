@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/teams', to: 'teams#index', as: 'teams'
   get '/team/:id', to: 'teams#show', as: 'user_team'
   get '/teams/new', to: 'teams#new', as: 'new_team'
+  post '/teams/create', to: 'teams#create', as: 'create_team'
   authenticate :user, lambda { |user| user.role == 'admin' } do
     mount Sidekiq::Web => '/sidekiq'
   end
