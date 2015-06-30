@@ -22,10 +22,14 @@ class EntriesController < ApplicationController
   end
 
   def create
+    unless current_user.team.owner == current_user
+      flash[:alert] = "Only the team owner can submit the entry."
+      return redirect_to user_team_path(current_user.team)
+    end
     @entry = current_user.team.create_entry(entry_params)
     respond_to do |format|
       if @entry.save
-        DiscourseWorker.perform_async(current_user.username, 'Hackathon Participant', 'Code Launch 2015')
+        DiscourseWorker.perform_async(current_user.team.id, 'Hackathon Participant', 'Code Launch 2015')
         format.html { redirect_to @entry, notice: 'Your entry was submitted.' }
         format.json { render json: @entry }
       else
