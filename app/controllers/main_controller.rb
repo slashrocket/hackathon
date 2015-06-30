@@ -20,6 +20,9 @@ class MainController < ApplicationController
   end
   
   def welcome
+    if current_user.team
+      return redirect_to root_path
+    end
   end
 
   def admin
