@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 20150629144430) do
     t.string   "name"
     t.string   "url"
     t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "ownable_id"
+    t.string   "ownable_type"
   end
 
   add_index "entries", ["name"], name: "index_entries_on_name", using: :btree
@@ -52,9 +54,8 @@ ActiveRecord::Schema.define(version: 20150629144430) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "owner_id"
   end
 
@@ -79,10 +80,12 @@ ActiveRecord::Schema.define(version: 20150629144430) do
     t.string   "username"
     t.string   "image"
     t.string   "role"
+    t.integer  "team_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
   add_foreign_key "team_members", "teams"

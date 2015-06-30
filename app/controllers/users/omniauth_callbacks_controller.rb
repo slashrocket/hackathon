@@ -5,6 +5,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       flash[:notice] = "Signed in successfully"
+      @user.remember_me = 1
+      @user.save!
       sign_in_and_redirect @user, event: :authentication
     else
       session['devise.slack_data'] = request.env['omniauth.auth']
