@@ -15,7 +15,7 @@ module TeamsHelper
 
   def join_button(team)
     out = ''
-    unless team.users.include?(current_user)
+    unless team.users.include?(current_user) || !current_user
       out << "<span class=\"pull-right\">"
       out << link_to('<i class="glyphicon glyphicon-ok"></i> Join Team!'.html_safe, join_team_url(team), class: 'btn btn-success btn-sm ')
       out << "</span>"
