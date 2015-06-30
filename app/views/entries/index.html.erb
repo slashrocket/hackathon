@@ -1,4 +1,8 @@
+<h1 align="center">Team Entries</h1>
+<hr/>
 <div class="row">
+  <div class="col-md-8 col-md-offset-2">
+  <% if @entries.present? %>
   <% @entries.each do |e| %>
       <div class="col-md-10 col-md-offset-1 entry">
         <span class="title text-left"><%= link_to truncate(e.name, length: 30), entry_url(e), class: "entry-links" %></span>
@@ -6,4 +10,8 @@
         <p class="lead text-left"><%= e.about %></p>
       </div>
   <% end %>
+  <% else %>
+    <h2 align="center"> Team Entries coming soon.</h2>
+  <% end %>
+  </div>
 </div>
