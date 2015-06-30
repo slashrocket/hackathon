@@ -13,11 +13,11 @@ class Ability
         can [:create], Entry
         can [:update], Entry, user: { id: user.id }
         can [:basic], User, id: user.id
-        can [:read], Team
-        can [:create], Team
+        can [:basic], Team
+        can [:basic], TeamMember
         can [:update], Team, owner_id: user.id
-        cannot [:destroy], Team
         can [:read], Setting
+        cannot [:destroy], Team
         cannot [:total], User
         cannot [:total], Entry
         cannot [:index], User
