@@ -11,21 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619132223) do
+ActiveRecord::Schema.define(version: 20150630013749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "entries", force: :cascade do |t|
-    t.text     "name"
-    t.text     "url"
+    t.string   "name"
+    t.string   "url"
     t.text     "about"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "ownable_id"
+    t.string   "ownable_type"
   end
 
-  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
+  add_index "entries", ["name"], name: "index_entries_on_name", using: :btree
+  add_index "entries", ["url"], name: "index_entries_on_url", using: :btree
 
   create_table "settings", force: :cascade do |t|
     t.string   "var",                   null: false
@@ -37,6 +39,31 @@ ActiveRecord::Schema.define(version: 20150619132223) do
   end
 
   add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true, using: :btree
+
+  create_table "team_members", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.boolean  "accepted",   default: false
+    t.boolean  "owner",      default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "team_members", ["team_id"], name: "index_team_members_on_team_id", using: :btree
+  add_index "team_members", ["user_id"], name: "index_team_members_on_user_id", using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "owner_id"
+    t.text     "description"
+    t.text     "used"
+    t.text     "location"
+  end
+
+  add_index "teams", ["name"], name: "index_teams_on_name", using: :btree
+  add_index "teams", ["owner_id"], name: "index_teams_on_owner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -56,10 +83,14 @@ ActiveRecord::Schema.define(version: 20150619132223) do
     t.string   "username"
     t.string   "image"
     t.string   "role"
+    t.integer  "team_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
-  add_foreign_key "entries", "users"
+  add_foreign_key "team_members", "teams"
+  add_foreign_key "team_members", "users"
 end
