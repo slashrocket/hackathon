@@ -8,4 +8,9 @@ class TeamMember < ActiveRecord::Base
       self.accepted = true
     end
   end
+
+  def accept!
+    self.accepted = true
+    self.save!
+  end
 end

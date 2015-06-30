@@ -5,3 +5,21 @@
 .team {
   text-align: center;
 }
+
+.team_status {
+  margin-left: 20px;
+  font-weight: 600;
+}
+.team_owner {
+  color: rgb(155, 153, 153);
+}
+.team_aproved {
+  color: rgb(22, 190, 17);
+  font-weight: 400 !important;
+}
+.team_pending {
+  color: rgb(226, 18, 18);
+}
+.member_inlist {
+    margin-top: 20px;
+}

@@ -16,13 +16,14 @@
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Team Members</h3>
+        <h3 class="panel-title">Team Members</h3> 
       </div>
       <div class="panel-body">
-        <ul>
+        <%= join_button(@team) %>
+        <ul class="list-unstyled">
           <% @team.team_members.each do |x| %>
             <% user = User.find(x.user_id) %>
-            <li><%= user_avatar(user) %> <%= user.username %></li>
+            <li class="member_inlist"><%= user_avatar(user) %> <%= user.username %>  <%= user_status(user, @team) %></li>
           <% end %>
         </ul>
       </div>

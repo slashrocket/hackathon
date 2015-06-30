@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
       respond_to do |format|
         format.html do
           flash[:notice] = "#{@team.name} Created!"
-          redirect_to user_team_path(@team.id)
+          redirect_to user_team_path(@team)
         end
         format.json { render json: @team }
       end
@@ -46,6 +46,21 @@ class TeamsController < ApplicationController
       flash[:alert] = "Failed to create team"
       render new
     end
+  end
+
+  def join
+    @team = Team.find(params[:id])
+    @team.users << current_user
+    flash[:notice] = "Your request to join #{@team.name} has been submited!"
+    redirect_to user_team_path(@team)
+  end
+
+  def aprove
+    @team = Team.find(params[:id])
+    @team_member = @team.team_members.where(user_id: params[:user_id]).take
+    @team_member.accept!
+    flash[:notice] = "The user has been!"
+    redirect_to user_team_path(@team)
   end
 
   def edit

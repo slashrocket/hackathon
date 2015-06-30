@@ -1,7 +1,4 @@
 class EntrySerializer < ActiveModel::Serializer
-  attributes :id, :name, :url, :about, :user_id, :user_name
+  attributes :id, :name, :url, :about
 
-  def user_name
-    object.user.username
-  end
 end
