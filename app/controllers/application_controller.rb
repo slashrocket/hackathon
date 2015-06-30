@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
       format.json { render json: { success: false, info: "Unauthorized" } }
     end
   end
+
+  # eagarload teams, to hit the db less times
+  def current_user
+    @current_user ||= super && User.includes(:team).find(@current_user.id)
+  end
 end

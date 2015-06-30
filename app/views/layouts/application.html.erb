@@ -13,7 +13,11 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div class="container main">
+    <div class="main">
+      <%= render partial: 'layouts/nprogress' %>
+      <% if notice or alert %>
+        <%= custom_bootstrap_flash %>
+      <% end %>
       <%= yield %>
     </div>
   </body>

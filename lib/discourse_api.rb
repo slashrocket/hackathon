@@ -39,9 +39,17 @@ class DiscourseAPI
   end
 
   def create_topic
-    entry = Entry.includes(:user).where(users: {username: @username}).first
     url = "#{DISCOURSE_URL}/posts?api_key=#{API_KEY}&api_username=#{@username}"
-    post = "##{entry.name}\n  Repository url: #{entry.url}\n  About the project:\n  #{entry.about}\n  "
+    user = User.includes(:entry, team: :entry).find_by_username(@username)
+    if user.entry
+      entry = user.entry
+      post = "##{entry.name}\n  Repository url: #{entry.url}\n  About the project:\n  #{entry.about}\n  "
+    elsif user.team.entry
+      entry = user.team.entry
+      user_list = user.team.users.collect{|u| "@#{u.username}"}.join('/n  ')
+      post = "##{entry.name}\n  Repository url: #{entry.url}\n  Team Members:\n  #{user_list}\n  About the project:\n  #{entry.about}\n  "
+    end
+    
     html = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true), autolink: true).render(post)
     params = {
       title: entry.name,
