@@ -1,0 +1,55 @@
+<h1 align="center">Team <span class="theme-text"><%= @team.name %></span></h1>
+<hr/>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">About the team</h3>
+      </div>
+      <div class="panel-body">
+        <% if @team.description %>
+          <%= @team.description %>
+        <% else %>
+          No team description.
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Team Members</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @team.team_members.each do |x| %>
+            <% user = User.find(x.user_id) %>
+            <li><%= user_avatar(user) %> <%= user.username %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tech used to create the app</h3>
+      </div>
+      <div class="panel-body">
+        <% if @team.used %>
+          <%= @team.used %>
+        <% else %>
+          No tech list provided.
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Team Member Locations</h3>
+      </div>
+      <div class="panel-body">
+        <% if @team.location %>
+          <%= @team.location %>
+        <% else %>
+          No locations entered.
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
