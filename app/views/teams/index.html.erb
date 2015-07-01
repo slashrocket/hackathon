@@ -2,4 +2,9 @@
 <hr/>
 <div class="row">
   <%= render @teams %>
+  <% if !@teams.empty? %>
+    <%= render @teams %>
+  <% else %>
+    <center><strong>Check back once Code Launch 2015 has begun!</strong></center>
+  <% end %>
 </div>
