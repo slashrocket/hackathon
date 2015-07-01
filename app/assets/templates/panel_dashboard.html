@@ -13,10 +13,10 @@
 
   <div class="row">
     <div class="col-xs-12 col-md-6 col-lg-3">
-      <div class="panel panel-blue panel-widget ">
+      <div class="panel panel-purple panel-widget ">
         <div class="row no-padding">
           <div class="col-sm-3 col-lg-5 widget-left">
-            <em class="fa fa-users large-icon"></em>
+            <em class="fa fa-user large-icon"></em>
           </div>
           <div class="col-sm-9 col-lg-7 widget-right">
             <div class="large">{{total_users.value}}</div>
@@ -25,16 +25,15 @@
         </div>
       </div>
     </div>
-    {{ $rootScope.sign_up }}
     <div class="col-xs-12 col-md-6 col-lg-3">
-      <div class="panel panel-orange panel-widget">
+      <div class="panel panel-blue panel-widget ">
         <div class="row no-padding">
           <div class="col-sm-3 col-lg-5 widget-left">
-            <em class="fa fa-files-o large-icon"></em>
+            <em class="fa fa-users large-icon"></em>
           </div>
           <div class="col-sm-9 col-lg-7 widget-right">
-            <div class="large">{{total_entries.value}}</div>
-            <div class="text-muted">Total Entries</div>
+            <div class="large">{{total_teams.value}}</div>
+            <div class="text-muted">Total Teams</div>
           </div>
         </div>
       </div>
@@ -66,19 +65,33 @@
       </div>
     </div>
   </div><!--/.row-->
-  
   <div class="row">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6 col-lg-3">
+      <div class="panel panel-orange panel-widget">
+        <div class="row no-padding">
+          <div class="col-sm-3 col-lg-5 widget-left">
+            <em class="fa fa-files-o large-icon"></em>
+          </div>
+          <div class="col-sm-9 col-lg-7 widget-right">
+            <div class="large">{{total_entries.value}}</div>
+            <div class="text-muted">Total Entries</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.row-->
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
       <div class="panel panel-default">
         <div class="panel-body easypiechart-panel">
-          <h4>Users - Entries Ratio</h4>
+          <h4>Teams - Entries Ratio</h4>
           <div class="progress-wrapper">
             <div class="progress ng-binding" ng-style="{'font-size': getFontSize()}">
-            {{total_entries.value}}/{{total_users.value}}
+            {{total_entries.value}}/{{total_teams.value}}
             </div>
             <div
             round-progress
-            max="total_users.value"
+            max="total_teams.value"
             current="total_entries.value"
             color="#45ccce"
             bgcolor="#eaeaea"
@@ -93,7 +106,31 @@
         </div>
       </div>
     </div>
-
+    <div class="col-xs-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body easypiechart-panel">
+          <h4>Users - Teams Ratio</h4>
+          <div class="progress-wrapper">
+            <div class="progress ng-binding" ng-style="{'font-size': getFontSize()}">
+            {{total_teams.value}}/{{total_users.value}}
+            </div>
+            <div
+            round-progress
+            max="total_users.value"
+            current="total_teams.value"
+            color="#45ccce"
+            bgcolor="#eaeaea"
+            radius="100"
+            stroke="20"
+            semi="false"
+            rounded="true"
+            clockwise="false"
+            iterations="50"
+            animation="easeInOutQuart"></div>
+            </div>
+        </div>
+      </div>
+    </div>
     <div class="col-xs-6 col-md-3">
       <div class="panel panel-default">
         <div class="panel-body easypiechart-panel">

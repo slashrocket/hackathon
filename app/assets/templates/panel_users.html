@@ -23,7 +23,7 @@
           <th st-sort="firstName">Username</th>
           <th st-sort="lastName">Role</th>
           <th st-sort="birthDate">E-mail</th>
-          <th st-sort="balance">Entry name</th>
+          <th st-sort="balance">Team name</th>
         </tr>
         </thead>
         <tbody>
@@ -31,7 +31,7 @@
           <td>{{user.username}}</td>
           <td>{{user.role}}</td>
           <td>{{user.email}}</td>
-          <td><a href="" ui-sref="entries({search: user.entry.name})">{{user.entry.name}}</a></td>
+          <td><a href="" ui-sref="teams({search: user.team_name})">{{user.team_name}}</a></td>
           <td>
           <button type="button" ng-click="removeItem(user)" class="btn btn-sm btn-danger">
             <i class="fa fa-user-times">
