@@ -4,16 +4,22 @@ class GetTeamSerializer < ActiveModel::Serializer
   has_many :users
 
   def owner_name
-    object.owner.username
+    if team.owner
+      object.owner.username
+    end
   end
   def entry_name
-    object.entry.name
+    if object.entry
+      object.entry.name
+    end
   end
 
   def users
-        arr = []
-    object.users.each do |user|
-      arr << {id: user.id, username: user.username, owner: object.owner.username == user.username, accepted: user.team_members_accepted}
+    arr = []
+    if object.users
+      object.users.each do |user|
+        arr << {id: user.id, username: user.username, owner: object.owner.username == user.username, accepted: user.team_members_accepted}
+      end
     end
     arr
   end
