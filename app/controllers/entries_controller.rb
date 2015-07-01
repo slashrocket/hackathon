@@ -6,7 +6,7 @@ class EntriesController < ApplicationController
     @entries = Entry.order('id DESC')
     respond_to do |format|
       format.html
-      format.json { render json: @entries}
+      format.json { render json: @entries, each_serializer: GetEntrySerializer  }
     end
   end
 
@@ -35,7 +35,7 @@ class EntriesController < ApplicationController
       if @entry.save
         DiscourseWorker.perform_async(current_user.team.id, 'Hackathon Participant', 'Code Launch 2015')
         format.html { redirect_to @entry, notice: 'Your entry was submitted.' }
-        format.json { render json: @entry }
+        format.json { render json: @entry, serializer: GetEntrySerializer }
       else
         format.html { render :new }
         format.json { render json: {success: false, info: "User wasn't saved"} }

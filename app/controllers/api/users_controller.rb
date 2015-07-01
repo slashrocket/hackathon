@@ -7,7 +7,7 @@ module Api
     def index
       @users = User.all
       respond_to do |format| 
-        format.json { render json: @users } 
+        format.json { render json: @users, each_serializer: GetUserSerializer } 
       end
     end
 
