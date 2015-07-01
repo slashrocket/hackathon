@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/rules', to: 'main#rules', as: 'rules'
   get '/welcome', to: 'main#welcome', as: 'welcome'
   devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' },
+             skip:        [:sessions, :registrations]
   devise_scope :user do
     #delete 'users/sign_out(.:format)' => 'devise/sessions#destroy', as: 'destroy_user_session'
     get '/api/current_user' => 'users/sessions#show_current_user', as: 'show_current_user'
