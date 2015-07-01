@@ -1,10 +1,9 @@
 <h1 align="center">Teams</h1>
 <hr/>
 <div class="row">
-  <%= render @teams %>
-  <% if !@teams.empty? %>
-    <%= render @teams %>
-  <% else %>
-    <center><strong>Check back once Code Launch 2015 has begun!</strong></center>
+  <% unless @teams.present? %>
+    <h2 align="center"> There are no Teams yet.</h2>
+    <center><%= link_to "Create yours now", new_team_url, class: 'btn btn-lg btn-primary' %></center>
   <% end %>
+  <%= render @teams %>
 </div>
