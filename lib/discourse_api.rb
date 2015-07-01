@@ -50,7 +50,7 @@ class DiscourseAPI
     owner = team.owner
     url = "#{DISCOURSE_URL}/posts?api_key=#{API_KEY}&api_username=#{owner.username}"
     entry = team.entry
-    user_list = team.users.collect{|u| "@#{u.username}"}.join('/n  ')
+    user_list = team.users.collect{|u| "@#{u.username}/n  "}
     post = "##{entry.name}\n  Project url: #{entry.url}\n  Team Members:\n  #{user_list}\n  About the project:\n  #{entry.about}\n  "
     html = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true), autolink: true).render(post)
     params = {
@@ -61,6 +61,30 @@ class DiscourseAPI
     HTTParty.post(url, body: params)
   end
 
+  def get_post_id(entry)
+    slug = entry.name.parameterize
+    url = "#{DISCOURSE_URL}/t/#{slug}.json"
+    topic = HTTParty.get(url)
+    topic.parsed_response['post_stream']['posts'][0]['id']
+  end
+
+  def post_topic_update(team)
+    owner = team.owner
+    entry = team.entry
+    post_id = get_post_id(entry)
+    user_list = team.users.collect{|u| "@#{u.username}"}.join('<br>')
+    raw = "##{entry.name}\n  Project url: #{entry.url}\n  Team Members:\n  #{user_list}\n  About the project:\n  #{entry.about}\n  "
+    html = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true), autolink: true).render(raw)
+    params = {
+      id: post_id,
+      raw: html
+    }
+    publish_url = "#{DISCOURSE_URL}/posts/#{post_id}.json?api_key=#{API_KEY}&api_username=#{owner.username}"
+    HTTParty.put(publish_url, body: {
+      post: params
+    })
+  end
+
   def post_entry
     team = Team.includes(:owner, team_members:[:user]).find(@team_id)
     team.users.each do |user|
@@ -69,7 +93,9 @@ class DiscourseAPI
     create_topic(team)
   end
 
-  def update_topic
-    
+  def member_added
+    team = Team.includes(:owner, team_members:[:user]).find(@team_id)
+    post_topic_update(team)
   end
+
 end
