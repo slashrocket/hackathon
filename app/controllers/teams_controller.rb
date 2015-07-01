@@ -7,7 +7,14 @@ class TeamsController < ApplicationController
     @teams = Team.all
     respond_to do |format|
       format.html
-      format.json { render json: @teams}
+      format.json { render json: @teams, each_serializer: GetTeamSerializer }
+    end
+  end
+
+  def total
+    @total = Team.count
+    respond_to do |format|
+      format.json { render json: {value: @total} }
     end
   end
 
@@ -19,7 +26,7 @@ class TeamsController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.json { render json: @team }
+      format.json { render json: @team, serializer: GetTeamSerializer }
     end
   end
 
@@ -40,7 +47,7 @@ class TeamsController < ApplicationController
           flash[:notice] = "#{@team.name} Created!"
           redirect_to user_team_path(@team)
         end
-        format.json { render json: @team }
+        format.json { render json: @team, serializer: GetTeamSerializer  }
       end
     else
       flash[:alert] = "Failed to create team"
@@ -80,5 +87,9 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name, :description, :used, :location, :owner_id)
+  end
+  
+  def default_serializer_options
+    {root: false}
   end
 end
