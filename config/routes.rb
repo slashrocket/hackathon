@@ -9,7 +9,7 @@ Rails.application.routes.draw do
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks' },
              skip:        [:sessions, :registrations]
   devise_scope :user do
-    #delete 'users/sign_out(.:format)' => 'devise/sessions#destroy', as: 'destroy_user_session'
+    delete 'users/sign_out(.:format)' => 'devise/sessions#destroy', as: 'destroy_user_session'
     get '/api/current_user' => 'users/sessions#show_current_user', as: 'show_current_user'
     post '/api/check/is_admin' => 'users/sessions#is_admin', as: 'is_admin'
   end
