@@ -59,7 +59,8 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team_member = @team.team_members.where(user_id: params[:user_id]).take
     @team_member.accept!
-    flash[:notice] = "The user has been!"
+    DiscourseUpdateWorker.perform_async(current_user.team.id, 'Hackathon Participant', 'Code Launch 2015') if @team.entry
+    flash[:notice] = "The user has been aproved!"
     redirect_to user_team_path(@team)
   end
 
