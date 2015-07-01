@@ -9,5 +9,8 @@ hackathonPanel
     Totals.prototype.entries = function () {
       return this.service.get({ kind: 'total_entries'});
     };
+    Totals.prototype.teams = function () {
+      return this.service.get({ kind: 'total_teams'});
+    };
     return new Totals;
   }]);

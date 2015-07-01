@@ -1,0 +1,65 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a ui-sref="dashboard"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="active">Teams</li>
+    </ol>
+  </div><!--/.row-->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Team List</h1>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-lg-12">
+  <div class="panel panel-default panel-body">
+    <div class="table">
+      <table st-table="teams" st-table-raw="teams" class="table table-striped">
+        <thead>
+        <tr>
+          <th colspan="6"><input st-search="" id="team_search" ng-model="search" class="form-control" placeholder="global search ..." type="text"/></th>
+        </tr>
+        <tr>
+          <th st-sort="firstName">Name</th>
+          <th st-sort="lastName">Description</th>
+          <th st-sort="birthDate">Tech Used</th>
+          <th st-sort="balance">Owner</th>
+          <th st-sort="balance">Members</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="team in teams">
+          <td>{{team.name}}</td>
+          <td>{{team.description}}</td>
+          <td>{{team.used}}</td>
+          <td><a href="" ui-sref="users({search: team.owner_name})">{{team.owner_name}}</a></td>
+          <td>
+            <ul ng-repeat="user in team.users">
+              <li>
+                <a href="" ui-sref="users({search: user.username})">{{user.username}}</a>
+                <span ng-show="user.owner">(team owner)</span>
+                <span ng-show="user.accepted && !user.owner">(Accepted)</span>
+                <span ng-hide="user.accepted">(Pending Aproval)</span>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <button type="button" ng-click="removeItem(entry)" class="btn btn-sm btn-danger">
+              <i class="fa fa-user-times">
+              </i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6" class="text-center">
+              <div st-pagination="" st-items-by-page="10" st-displayed-pages="7"></div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  </div>
+</div>

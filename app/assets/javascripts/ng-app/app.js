@@ -47,6 +47,24 @@ hackathonPanel = angular
               });
           }]
         })
+        .state('teams', {
+          url: '/admin/teams?search',
+          templateUrl: 'panel_teams.html',
+          controller: 'TeamsController',
+          resolve: {
+            teams: ['Team', function(Team){
+              return Team.all().$promise;
+            }],
+            query: ['$stateParams', function($stateParams){
+              return $stateParams;
+            }]
+          },
+          onEnter: ['Session', '$rootScope', function(Session, $rootScope){
+              Session.get().$promise.then(function(data){
+                if (data.user.role == "admin"){$rootScope.user = data.user}
+              });
+          }]
+        })
         .state('entries', {
           url: '/admin/entries?search',
           templateUrl: 'panel_entries.html',
