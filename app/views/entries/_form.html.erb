@@ -17,7 +17,11 @@
     </div>
     <div class="form-group">
       <%= f.label :url %>
-      <%= f.text_field :url, required: true, class: "form-control" %>
+      <%= f.text_field :url, required: true, class: "form-control", value: "http://" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :source_code_url %>
+      <%= f.text_field :source_code_url, required: true, class: "form-control", value: "http://" %>
     </div>
     <div class="form-group">
       <%= f.label :about %>

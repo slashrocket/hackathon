@@ -25,6 +25,8 @@ class Ability
         cannot [:firebase_url], Setting
     end
     if !user
+      can [:read], Team
+      cannot [:update], Team
       can [:read], Setting
       cannot [:update], Setting
     end

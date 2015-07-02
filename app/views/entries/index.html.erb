@@ -1,17 +1,21 @@
 <h1 align="center">Team Entries</h1>
-<hr/>
+<br>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
   <% if @entries.present? %>
   <% @entries.each do |e| %>
-      <div class="col-md-10 col-md-offset-1 entry">
+    <div class="col-md-10 col-md-offset-1 entry">
+      <div class="entry-info">
         <span class="title text-left"><%= link_to truncate(e.name, length: 30), entry_url(e), class: "entry-links" %></span>
-        <a href="<%= e.url %>" class="entry-links repo-link"><span class="lead"><%= truncate(e.url, length: 35) %></span></a>
-        <p class="lead text-left"><%= e.about %></p>
+        <a href="<%= e.url %>" class="entry-links url-link"><span class="lead"><%= truncate(e.url, length: 35) %></span></a>
+        <p class="lead text-left"><%= e.about %>
+          <a href="<%= e.source_code_url %>" class="entry-links repo-link"><span class="lead">Source Code</span></a>
+        </p>
       </div>
+    </div>
   <% end %>
   <% else %>
-    <h2 align="center"> Team Entries coming soon.</h2>
+    <h2 align="center">Team Entries coming soon.</h2>
   <% end %>
   </div>
 </div>

@@ -19,7 +19,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    if @team.owner == current_user || current_user.role == 'admin'
+    if @team.owner == current_user
       @team = Team.includes(:owner, team_members:[:user]).find(params[:id])
     else
       @team = Team.includes(:owner, team_members:[:user]).where(team_members: {accepted: true}).find(params[:id])
@@ -32,7 +32,7 @@ class TeamsController < ApplicationController
 
   def new
     if current_user.team
-      flash[:alert] = "You are already the member of a team"
+      flash[:alert] = 'You are already a member of a team'
       return redirect_to root_path
     end
     @team = Team.new
@@ -50,7 +50,7 @@ class TeamsController < ApplicationController
         format.json { render json: @team, serializer: GetTeamSerializer  }
       end
     else
-      flash[:alert] = "Failed to create team"
+      flash[:alert] = 'Failed to create team'
       render new
     end
   end
@@ -58,7 +58,7 @@ class TeamsController < ApplicationController
   def join
     @team = Team.find(params[:id])
     @team.users << current_user
-    flash[:notice] = "Your request to join #{@team.name} has been submited!"
+    flash[:notice] = "Your request to join #{@team.name} has been submitted!"
     redirect_to user_team_path(@team)
   end
 
@@ -67,20 +67,20 @@ class TeamsController < ApplicationController
     @team_member = @team.team_members.where(user_id: params[:user_id]).take
     @team_member.accept!
     DiscourseUpdateWorker.perform_async(current_user.team.id, 'Hackathon Participant', 'Code Launch 2015') if @team.entry
-    flash[:notice] = "The user has been aproved!"
+    flash[:notice] = 'The user has been approved!'
     redirect_to user_team_path(@team)
   end
 
   def edit
-    
+
   end
 
   def update
-    
+
   end
 
   def destroy
-    
+
   end
 
   private
@@ -88,7 +88,7 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:name, :description, :used, :location, :owner_id)
   end
-  
+
   def default_serializer_options
     {root: false}
   end

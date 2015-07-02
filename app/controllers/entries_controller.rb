@@ -68,7 +68,7 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:name, :url, :about)
+    params.require(:entry).permit(:name, :url, :about, :source_code_url)
   end
 
   def default_serializer_options

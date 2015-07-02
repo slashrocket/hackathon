@@ -16,8 +16,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <% if current_user %>
-          <% if Setting.submit_entry %>
-            <li><%= link_to 'Submit', new_entry_url %></li>
+          <% if current_user.team %>
+            <% if Setting.submit_entry %>
+              <li><%= link_to 'Submit', new_entry_url %></li>
+            <% end %>
           <% end %>
         <% end %>
         <li><%= link_to 'Entries', entries_url %></li>
@@ -31,10 +33,10 @@
           <% else %>
             <li><%= link_to "Create Your Team", new_team_url %></li>
           <% end %>
-          <p class="navbar-text"> <%= user_avatar(current_user) %> <%= current_user.username %></p>
           <% if current_user.role == 'admin' %>
             <li><%= admin_button %></li>
           <% end %>
+          <p class="navbar-text"> <%= user_avatar(current_user) %> <%= current_user.username %></p>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <% if Setting.sign_up %>

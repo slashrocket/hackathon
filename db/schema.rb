@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630151329) do
+ActiveRecord::Schema.define(version: 20150702204001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20150630151329) do
     t.string   "name"
     t.string   "url"
     t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "team_id"
+    t.text     "source_code_url"
   end
 
   add_index "entries", ["name"], name: "index_entries_on_name", using: :btree

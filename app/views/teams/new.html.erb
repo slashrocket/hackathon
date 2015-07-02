@@ -7,10 +7,10 @@
         <h3>Tips and Tricks</h3>
         <hr/>
         <ul>
-          <li>You need a team, even if it will only be yourself coding.</li>
+          <li>You need a team, even if it will only be coding alone.</li>
           <li>Keep the name short and easy to remember.</li>
           <li>Your team name will become your hackathon page url.</li>
-          <li>The more optional info you provide, the better your chances of finding fellow coders to join your team</li>
+          <li>The more optional info you provide, the better your chances of finding fellow coders to join your team.</li>
           <li>You can change your description and other optional items later, but not your team name.</li>
           <li>Have fun, not all code launches take off, but they should all be a blast!</li>
         </ul>
@@ -22,19 +22,19 @@
     <%= form_for @team, url: create_team_path do |f| %>
       <div class="form-group">
         <%= f.label :name, "Team Name (required)" %>
-        <%= f.text_field :name, placeholder: "The Slashrockets", class: "form-control", required: true %>
+        <%= f.text_field :name, class: "form-control", required: true %>
       </div>
       <div class="form-group">
         <%= f.label :description, "Project Description (optional)" %>
-        <%= f.text_area :description, placeholder: "I want to build the best note taking app the world has ever seen!", class: "form-control" %>
+        <%= f.text_area :description, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :used, "Tech Used (optional)" %>
-        <%= f.text_area :used, placeholder: "Ruby, Rails, Python, Javascript, CSS3", class: "form-control" %>
+        <%= f.text_area :used, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :location, "Location (optional)" %>
-        <%= f.text_area :location, placeholder: "Princeton, NJ, USA", class: "form-control" %>
+        <%= f.text_area :location, class: "form-control" %>
       </div>
       <hr/>
       <%= f.submit "Create your team", class: 'btn btn-lg btn-primary btn-block' %>

@@ -1,6 +1,7 @@
 <div class="col-md-8 col-md-offset-2">
   <h1 class="title"><%= @entry.name %></h1>
-  <a href="<%= @entry.url %>" class="repo-link"><span class="lead"><%= @entry.url %></span></a>
   <p class="lead"><%= @entry.about %></p>
-  <%= link_to "Back to Submissions", entries_url %>
+  <p><a href="<%= @entry.url %>" class="repo-link"><span class="lead"><%= @entry.url %></span></a></p>
+  <p><a href="<%= @entry.source_code_url %>" class="repo-link"><span class="lead"><%= @entry.source_code_url %></span></a></p>
+  <%= link_to "Back to All Entries", entries_url %>
 </div>

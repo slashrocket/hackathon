@@ -45,12 +45,18 @@ body {
   @include grey-background(0.8);
   border-radius: 10px;
   margin-bottom: 10px;
-  .repo-link {
-    float: right;
-    margin-top: 1%;
-  }
-  .entry-links {
-    color: $seagull;
+  .entry-info {
+    margin-top: 5px;
+    .url-link {
+      float: right;
+      margin-top: 1%;
+    }
+    .entry-links {
+      color: $seagull;
+    }
+    .repo-link {
+      float: right;
+    }
   }
 }
 
@@ -134,4 +140,13 @@ a:hover {
 
 .viewteams {
   margin-right: 25px;
+}
+
+.btn-primary {
+  background-color: $seagull;
+  border-color: white;
+}
+
+.btn-primary:hover {
+  background-color: $madison;
 }
