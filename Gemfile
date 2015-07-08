@@ -28,7 +28,6 @@ gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 gem 'sidekiq'
 gem 'sinatra', require: nil
-gem 'newrelic_rpm'
 group :development, :test do
   gem 'figaro'
   gem 'byebug'
@@ -40,4 +39,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'rails_best_practices'
   gem 'bullet'
+end
+group :production do
+  gem 'newrelic_rpm'
 end
