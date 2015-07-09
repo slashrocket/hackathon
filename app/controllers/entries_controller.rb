@@ -24,11 +24,11 @@ class EntriesController < ApplicationController
   def create
     unless current_user.team.owner == current_user
       flash[:alert] = "Only the team owner can submit the entry."
-      return redirect_to user_team_path(current_user.team)
+      return redirect_to team_path(current_user.team)
     end
     if current_user.team.entry
       flash[:alert] = "Your team has already submitted an entry."
-      return redirect_to user_team_path(current_user.team)
+      return redirect_to team_path(current_user.team)
     end
     @entry = current_user.team.create_entry(entry_params)
     respond_to do |format|

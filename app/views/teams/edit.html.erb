@@ -1,14 +1,14 @@
-<h1 align="center">Create your coding dream team</h1>
+<h1 align="center">Edit your coding dream team</h1>
 <hr/>
 <div class="row">
   <div class="col-md-6 col-md-offset-1" align="center">
     <%= render 'tips'%>
   </div>
   <div class="col-md-4">
-    <%= form_for @team, url: teams_path do |f| %>
+    <%= form_for @team, url: team_path do |f| %>
       <%= render 'form_tags', f: f %>
       <hr/>
-      <%= f.submit "Create your team", class: 'btn btn-lg btn-primary btn-block' %>
+      <%= f.submit "Save your team", class: 'btn btn-lg btn-primary btn-block' %>
     <% end %>
   </div>
 </div>

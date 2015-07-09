@@ -19,7 +19,8 @@ class TeamsController < ApplicationController
   end
 
   def show
-    if @team.owner == current_user
+    @team = Team.find(params[:id])
+    if @team.owner == current_user || current_user && current_user.role == 'admin'
       @team = Team.includes(:owner, team_members:[:user]).find(params[:id])
     else
       @team = Team.includes(:owner, team_members:[:user]).where(team_members: {accepted: true}).find(params[:id])
@@ -45,7 +46,7 @@ class TeamsController < ApplicationController
       respond_to do |format|
         format.html do
           flash[:notice] = "#{@team.name} Created!"
-          redirect_to user_team_path(@team)
+          redirect_to team_path(@team)
         end
         format.json { render json: @team, serializer: GetTeamSerializer  }
       end
@@ -72,11 +73,21 @@ class TeamsController < ApplicationController
   end
 
   def edit
-
+    if @team.owner == current_user || current_user.role == 'admin'
+      @team = Team.includes(:owner).find(params[:id])
+    else
+      redirect_to team_path(@team)
+    end
   end
 
   def update
-
+    if @team.owner == current_user || current_user.role == 'admin'
+      @team = Team.find(params[:id])
+      if @team.update_attributes(team_params)
+        flash[:notice] = "The team has been edited!"
+        redirect_to team_path(@team)
+      end
+    end
   end
 
   def destroy
@@ -86,7 +97,7 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name, :description, :used, :location, :owner_id)
+    params.require(:team).permit(:name, :description, :used, :location)
   end
 
   def default_serializer_options

@@ -22,4 +22,10 @@ module TeamsHelper
     end
     out.html_safe
   end
+
+  def edit_button(team)
+    if current_user == team.owner || current_user && current_user.role == 'admin'
+      link_to "Edit Team", edit_team_path(@team), class: 'btn btn-lg btn-primary'
+    end
+  end
 end

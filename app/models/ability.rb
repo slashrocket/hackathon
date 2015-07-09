@@ -14,8 +14,8 @@ class Ability
         can [:update], Entry, user: { id: user.id }
         can [:basic], User, id: user.id
         can [:basic], Team
-        can [:basic], TeamMember
         can [:update], Team, owner_id: user.id
+        can [:basic], TeamMember
         can [:read], Setting
         cannot [:destroy], Team
         cannot [:total], User
