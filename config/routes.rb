@@ -24,12 +24,10 @@ Rails.application.routes.draw do
   get '/api/totals/total_teams' => 'teams#total', as: 'teams_total'
   get '/admin', to: 'main#admin'
   get '/admin/*path', to: 'main#admin'
-  get '/teams', to: 'teams#index', as: 'teams'
-  get '/team/:id', to: 'teams#show', as: 'user_team'
-  get '/teams/new', to: 'teams#new', as: 'new_team'
+
+  resources :teams
   get '/teams/:id/join', to: 'teams#join', as: 'join_team'
   get '/teams/:id/approve/:user_id', to: 'teams#aprove', as: 'aprove_member'
-  post '/teams/create', to: 'teams#create', as: 'create_team'
   authenticate :user, lambda { |user| user.role == 'admin' } do
     mount Sidekiq::Web => '/sidekiq'
   end
