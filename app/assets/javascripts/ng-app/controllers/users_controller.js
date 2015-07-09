@@ -12,7 +12,7 @@ hackathonPanel
           var $e = angular.element(e);
           $e.triggerHandler('input');
         };
-      }, 60)
+      }, 5)
 
       $scope.removeItem = function(user){
         var index = $scope.users.indexOf(user);
