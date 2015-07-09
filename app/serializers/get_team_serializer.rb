@@ -4,7 +4,7 @@ class GetTeamSerializer < ActiveModel::Serializer
   has_many :users
 
   def owner_name
-    if team.owner
+    if object.owner
       object.owner.username
     end
   end
