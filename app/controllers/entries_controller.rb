@@ -55,12 +55,9 @@ class EntriesController < ApplicationController
   end
 
   def destroy
-    @entry = Entry.find(params[:id])
     if current_user.role == 'admin'
-      Entry.destroy(params[:id])
       respond_to do |format|
-        format.html { redirect_to :index}
-        format.json { render json: {success: true}}
+        format.json { render json: Entry.destroy(params[:id]) }
       end
     end
   end

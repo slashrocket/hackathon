@@ -96,7 +96,11 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-
+    if current_user.role == 'admin'
+      respond_to do |format|
+        format.json { render json: Team.destroy(params[:id]) }
+      end
+    end
   end
 
   private

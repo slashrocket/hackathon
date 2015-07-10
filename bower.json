@@ -18,7 +18,8 @@
       "bootstrap-switch": "latest",
       "angular-bootstrap-switch": "latest",
       "angular-svg-round-progressbar": "latest",
-      "angular-xeditable": "latest"
+      "angular-xeditable": "latest",
+      "ngDialog": "latest"
     },
     "resolutions": {
       "angular": "1.4.2"

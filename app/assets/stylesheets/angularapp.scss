@@ -3,6 +3,8 @@
 @import "bootstrap-switch";
 @import "styles";
 @import "angular-xeditable/dist/css/xeditable";
+@import "ngDialog/css/ngDialog";
+@import "ngDialog/css/ngDialog-theme-default";
 
 .navbar-header{
   max-height: 50px !important;
@@ -51,4 +53,8 @@
 }
 .status-idle {
   background-position: 0 -54px;
+}
+.ngdialog.ngdialog-theme-default .ngdialog-button.ngdialog-button-primary {
+  background: #f9243f !important;
+  color: #fff;
 }

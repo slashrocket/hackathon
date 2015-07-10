@@ -1,6 +1,6 @@
 hackathonPanel
-  .controller('EntriesController', ['$rootScope', '$scope', '$timeout', 'entries', 'query', 'Entry',
-    function($rootScope, $scope, $timeout, entries, query, Entry) {
+  .controller('EntriesController', ['$rootScope', '$scope', '$timeout', 'entries', 'query', 'Entry', 'ngDialog',
+    function($rootScope, $scope, $timeout, entries, query, Entry, ngDialog) {
       $scope.entries = entries;
 
       $scope.search = "";
@@ -21,4 +21,11 @@ hackathonPanel
         }
       };
 
+      $scope.deleteModal = function(entry){
+        ngDialog.open({
+          template: 'delete_modal.html',
+          scope: $scope,
+          data: {entry: entry}
+        });
+      };
   }]);

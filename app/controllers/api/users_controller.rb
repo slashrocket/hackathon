@@ -29,6 +29,12 @@ module Api
       end
     end
 
+    def destroy
+      if current_user.role == 'admin'
+        respond_with User.destroy(params[:id])
+      end
+    end
+
     private
 
     def default_serializer_options

@@ -1,6 +1,6 @@
 hackathonPanel
-  .controller('UsersController', ['$rootScope', '$scope', '$timeout', 'users', 'query', 'User',
-    function($rootScope, $scope, $timeout, users, query, User) {
+  .controller('UsersController', ['$rootScope', '$scope', '$timeout', 'users', 'query', 'User', 'ngDialog',
+    function($rootScope, $scope, $timeout, users, query, User, ngDialog) {
       
       $scope.users = users;
       $scope.roles = [
@@ -29,4 +29,13 @@ hackathonPanel
           $scope.users.splice(index, 1);
         }
       };
+
+      $scope.deleteModal = function(user){
+        ngDialog.open({
+          template: 'delete_modal.html',
+          scope: $scope,
+          data: {user: user}
+        });
+      };
+
   }]);

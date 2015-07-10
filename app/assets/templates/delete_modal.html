@@ -1,0 +1,24 @@
+<div ng-if="ngDialogData.user">
+  <h3>Delete user: {{ngDialogData.user.username}}</h3>
+  <h4>Are you sure?</h4>
+  <div class="ngdialog-buttons">
+    <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog()">CANCEL</button>
+    <button type="button" class="ngdialog-button ngdialog-button-primary btn-danger" ng-click="removeItem(ngDialogData.user); closeThisDialog()">DELETE</button>
+  </div>
+</div>
+<div ng-if="ngDialogData.team">
+  <h3>Delete team: {{ngDialogData.team.name}}</h3>
+  <h4>Are you sure?</h4>
+  <div class="ngdialog-buttons">
+    <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog()">CANCEL</button>
+    <button type="button" class="ngdialog-button ngdialog-button-primary btn-danger" ng-click="removeItem(ngDialogData.team); closeThisDialog()">DELETE</button>
+  </div>
+</div>
+<div ng-if="ngDialogData.entry">
+    <h3>Delete entry: {{ngDialogData.entry.name}}</h3>
+  <h4>Are you sure?</h4>
+  <div class="ngdialog-buttons">
+    <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog()">CANCEL</button>
+    <button type="button" class="ngdialog-button ngdialog-button-primary btn-danger" ng-click="removeItem(ngDialogData.entry); closeThisDialog()">DELETE</button>
+  </div>
+</div>

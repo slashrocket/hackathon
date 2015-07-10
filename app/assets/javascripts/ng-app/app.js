@@ -7,7 +7,8 @@ hackathonPanel = angular
     'smart-table',
     'frapontillo.bootstrap-switch',
     'angular-svg-round-progress',
-    'xeditable'
+    'xeditable',
+    'ngDialog'
   ])
   .run(['editableOptions', function(editableOptions){
     editableOptions.theme = 'bs3';
