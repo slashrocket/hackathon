@@ -17,6 +17,8 @@ class Ability
         can [:update], Team, owner_id: user.id
         can [:basic], TeamMember
         can [:read], Setting
+        can [:join], Team
+        can [:aprove], Team
         cannot [:destroy], Team
         cannot [:total], User
         cannot [:total], Entry
