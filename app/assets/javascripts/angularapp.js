@@ -12,6 +12,7 @@
 //= require angular-rails-templates
 //= require angular-xeditable/dist/js/xeditable.min.js
 //= require ngDialog/js/ngDialog.min.js
+//= require angular-loading-bar/build/loading-bar.js
 //= require_tree ./ng-app
 //= require_tree ../templates
 

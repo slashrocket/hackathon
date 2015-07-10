@@ -8,10 +8,14 @@ hackathonPanel = angular
     'frapontillo.bootstrap-switch',
     'angular-svg-round-progress',
     'xeditable',
-    'ngDialog'
+    'ngDialog',
+    'angular-loading-bar'
   ])
   .run(['editableOptions', function(editableOptions){
     editableOptions.theme = 'bs3';
+  }])
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
   }])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -46,10 +50,13 @@ hackathonPanel = angular
               return $stateParams;
             }]
           },
-          onEnter: ['Session', '$rootScope', function(Session, $rootScope){
-              Session.get().$promise.then(function(data){
-                if (data.user.role == "admin"){$rootScope.user = data.user}
-              });
+          onEnter: ['Session', '$rootScope', 'cfpLoadingBar', function(Session, $rootScope, cfpLoadingBar){
+            cfpLoadingBar.start();
+              
+            Session.get().$promise.then(function(data){
+              cfpLoadingBar.complete();
+              if (data.user.role == "admin"){$rootScope.user = data.user}
+            });
           }]
         })
         .state('teams', {
@@ -64,8 +71,10 @@ hackathonPanel = angular
               return $stateParams;
             }]
           },
-          onEnter: ['Session', '$rootScope', function(Session, $rootScope){
+          onEnter: ['Session', '$rootScope', 'cfpLoadingBar', function(Session, $rootScope, cfpLoadingBar){
+            cfpLoadingBar.start();
               Session.get().$promise.then(function(data){
+                cfpLoadingBar.complete();
                 if (data.user.role == "admin"){$rootScope.user = data.user}
               });
           }]
@@ -82,10 +91,12 @@ hackathonPanel = angular
               return $stateParams;
             }]
           },
-          onEnter: ['Session', '$rootScope', function(Session, $rootScope){
-              Session.get().$promise.then(function(data){
-                if (data.user.role == "admin"){$rootScope.user = data.user}
-              });
+          onEnter: ['Session', '$rootScope', 'cfpLoadingBar', function(Session, $rootScope, cfpLoadingBar){
+            cfpLoadingBar.start();
+            Session.get().$promise.then(function(data){
+              cfpLoadingBar.complete();
+              if (data.user.role == "admin"){$rootScope.user = data.user}
+            });
           }]
         });
       $urlRouterProvider.otherwise('/admin/dashboard');
