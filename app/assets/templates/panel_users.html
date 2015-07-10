@@ -28,15 +28,24 @@
         </thead>
         <tbody>
         <tr ng-repeat="user in users">
-          <td>{{user.username}}</td>
-          <td>{{user.role}}</td>
-          <td>{{user.email}}</td>
+          <td><span editable-text="user.username" e-name="username" e-form="userform" e-required>{{user.username}}</span></td>
+          <td><span editable-select="user.role" e-name="role" e-form="userform" e-ng-options="role.value as role.text for role in roles" e-required>{{user.role}}</span></td>
+          <td><span editable-text="user.email" e-name="email" e-form="userform" e-required>{{user.email}}</span></td>
           <td><a href="" ui-sref="teams({search: user.team_name})">{{user.team_name}}</a></td>
-          <td>
-          <button type="button" ng-click="removeItem(user)" class="btn btn-sm btn-danger">
-            <i class="fa fa-user-times">
-            </i>
-          </button>
+          <td style="white-space: nowrap">
+            <!-- form -->
+            <form editable-form name="userform" onbeforesave="updateUser($data, user.id)" ng-show="userform.$visible" class="form-buttons form-inline" shown="inserted == user">
+              <button type="submit" ng-disabled="userform.$waiting" class="btn btn-sm btn-primary">
+                save
+              </button>
+              <button type="button" ng-disabled="userform.$waiting" ng-click="userform.$cancel()" class="btn btn-sm btn-default">
+                cancel
+              </button>
+            </form>
+            <div class="buttons" ng-show="!userform.$visible">
+              <button class="btn btn-sm btn-primary" ng-click="userform.$show()">edit</button>
+              <button class="btn btn-sm btn-danger" ng-click="removeItem(entry)"><i class="fa fa-user-times"></i></button>
+            </div>
           </td>
         </tr>
         </tbody>

@@ -29,9 +29,9 @@
         </thead>
         <tbody>
         <tr ng-repeat="team in teams">
-          <td>{{team.name}}</td>
-          <td>{{team.description}}</td>
-          <td>{{team.used}}</td>
+          <td><span editable-text="team.name" e-name="name" e-form="teamform" e-required>{{team.name}}</span></td>
+          <td><span editable-text="team.description" e-name="description" e-form="teamform" e-required>{{team.description}}</span></td>
+          <td><span editable-text="team.used" e-name="used" e-form="teamform" e-required>{{team.used}}</span></td>
           <td><a href="" ui-sref="users({search: team.owner_name})">{{team.owner_name}}</a></td>
           <td>
             <ul ng-repeat="user in team.users">
@@ -43,11 +43,21 @@
               </li>
             </ul>
           </td>
-          <td>
-            <button type="button" ng-click="removeItem(entry)" class="btn btn-sm btn-danger">
-              <i class="fa fa-user-times">
-              </i>
-            </button>
+          <td style="white-space: nowrap">
+            <!-- form -->
+            <form editable-form name="teamform" onbeforesave="updateTeam($data, team.id)" ng-show="teamform.$visible" class="form-buttons form-inline" shown="inserted == team">
+              <button type="submit" ng-disabled="teamform.$waiting" class="btn btn-sm btn-primary">
+                save
+              </button>
+              <button type="button" ng-disabled="teamform.$waiting" ng-click="teamform.$cancel()" class="btn btn-sm btn-default">
+                cancel
+              </button>
+            </form>
+            <div class="buttons" ng-show="!teamform.$visible">
+              <button class="btn btn-sm btn-primary" ng-click="teamform.$show()">edit</button>
+              <button class="btn btn-sm btn-danger" ng-click="removeItem(entry)"><i class="fa fa-user-times">
+              </i></button>
+            </div>  
           </td>
         </tr>
         </tbody>

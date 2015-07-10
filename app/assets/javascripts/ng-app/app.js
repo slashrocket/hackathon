@@ -6,8 +6,12 @@ hackathonPanel = angular
     'ngCookies',
     'smart-table',
     'frapontillo.bootstrap-switch',
-    'angular-svg-round-progress'
+    'angular-svg-round-progress',
+    'xeditable'
   ])
+  .run(['editableOptions', function(editableOptions){
+    editableOptions.theme = 'bs3';
+  }])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider

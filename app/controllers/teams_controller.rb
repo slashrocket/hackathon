@@ -84,8 +84,13 @@ class TeamsController < ApplicationController
     if @team.owner == current_user || current_user.role == 'admin'
       @team = Team.find(params[:id])
       if @team.update_attributes(team_params)
-        flash[:notice] = "The team has been edited!"
-        redirect_to team_path(@team)
+        respond_to do |format|
+          format.html do
+            flash[:notice] = "The team has been edited!"
+            redirect_to team_path(@team)
+          end
+          format.json { render json: @team }
+        end
       end
     end
   end

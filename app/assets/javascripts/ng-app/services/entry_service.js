@@ -1,7 +1,7 @@
 hackathonPanel
   .factory('Entry', ['$resource', function($resource){
     function Entry(){
-      this.service = $resource('/entries/:id.json', {id:'@id'});
+      this.service = $resource('/entries/:id.json', {id:'@id'},{'update': { method: 'PUT' }});
     };
     Entry.prototype.all = function(id) {
       return this.service.query({ id: id });

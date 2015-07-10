@@ -10,6 +10,7 @@
 //= require angular-cookies
 //= require angular-smart-table
 //= require angular-rails-templates
+//= require angular-xeditable/dist/js/xeditable.min.js
 //= require_tree ./ng-app
 //= require_tree ../templates
 

@@ -3,7 +3,10 @@ hackathonPanel
     function($rootScope, $scope, $timeout, users, query, User) {
       
       $scope.users = users;
-      
+      $scope.roles = [
+        {value: 'user', text: 'user'},
+        {value: 'admin', text: 'admin'}
+      ]; 
       $scope.search = "";
       $timeout(function(){
         if (query.search) {
@@ -13,6 +16,11 @@ hackathonPanel
           $e.triggerHandler('input');
         };
       }, 5)
+
+      $scope.updateUser = function(data, user_id){
+        angular.extend(data, {id: user_id})
+        User.update(data);
+      };
 
       $scope.removeItem = function(user){
         var index = $scope.users.indexOf(user);

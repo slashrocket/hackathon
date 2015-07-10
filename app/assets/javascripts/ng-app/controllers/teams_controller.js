@@ -13,6 +13,11 @@ hackathonPanel
         };
       }, 5)
 
+      $scope.updateTeam = function(data, team_id){
+        angular.extend(data, {id: team_id})
+        Team.update(data);
+      };
+
       $scope.removeItem = function(entry){
         var index = $scope.entries.indexOf(entry);
         if (index !== -1){
