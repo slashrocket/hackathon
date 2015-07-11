@@ -50,7 +50,7 @@ class DiscourseAPI
     owner = team.owner
     url = "#{DISCOURSE_URL}/posts?api_key=#{API_KEY}&api_username=#{owner.username}"
     entry = team.entry
-    user_list = team.users.collect{|u| "@#{u.username}\n  "}
+    user_list = team.users.collect{|u| "@#{u.username}"}.join('<br>')
     post = "##{entry.name}\n  Project url: #{entry.url}\n  Team Members:\n  #{user_list}\n  About the project:\n  #{entry.about}\n  "
     html = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true), autolink: true).render(post)
     params = {
