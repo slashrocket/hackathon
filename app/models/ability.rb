@@ -18,7 +18,7 @@ class Ability
         can [:basic], TeamMember
         can [:read], Setting
         can [:join], Team
-        can [:aprove], Team
+        can [:approve], Team
         cannot [:destroy], Team
         cannot [:total], User
         cannot [:total], Entry

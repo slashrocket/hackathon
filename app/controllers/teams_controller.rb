@@ -60,16 +60,16 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.users << current_user
     flash[:notice] = "Your request to join #{@team.name} has been submitted!"
-    redirect_to user_team_path(@team)
+    redirect_to team_path(@team)
   end
 
-  def aprove
+  def approve
     @team = Team.find(params[:id])
     @team_member = @team.team_members.where(user_id: params[:user_id]).take
     @team_member.accept!
     DiscourseUpdateWorker.perform_async(current_user.team.id, 'Hackathon Participant', 'Code Launch 2015') if @team.entry
     flash[:notice] = 'The user has been approved!'
-    redirect_to user_team_path(@team)
+    redirect_to team_path(@team)
   end
 
   def edit

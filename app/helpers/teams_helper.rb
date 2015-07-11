@@ -8,7 +8,7 @@ module TeamsHelper
       out << "<span class=\"team_status team_approved\">APPROVED<span>"
     else
       out << "<span class=\"team_status team_pending\">PENDING APPROVAL <span>"
-      out << link_to('<i class="glyphicon glyphicon-ok"></i> Approve!'.html_safe, aprove_member_url(team, user), class: 'btn btn-success btn-sm')
+      out << link_to('<i class="glyphicon glyphicon-ok"></i> Approve!'.html_safe, approve_member_url(team, user), class: 'btn btn-success btn-sm')
     end
     out.html_safe
   end

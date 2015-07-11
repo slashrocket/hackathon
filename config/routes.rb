@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   resources :teams
   get '/teams/:id/join', to: 'teams#join', as: 'join_team'
-  get '/teams/:id/approve/:user_id', to: 'teams#aprove', as: 'aprove_member'
+  get '/teams/:id/approve/:user_id', to: 'teams#approve', as: 'approve_member'
   authenticate :user, lambda { |user| user.role == 'admin' } do
     mount Sidekiq::Web => '/sidekiq'
   end
