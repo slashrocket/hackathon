@@ -1,7 +1,10 @@
 # Overall helper
 module ApplicationHelper
   def user_avatar(user)
-    image_tag(user.image, size: '35x35', class: 'img-circle profile-image')
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
+
+    image_tag(gravatar_url, size: '35x35', class: 'img-circle profile-image')
   end
 
   def admin_button
