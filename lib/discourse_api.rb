@@ -74,15 +74,17 @@ class DiscourseAPI
     post_id = get_post_id(entry)
     user_list = team.users.collect{|u| "@#{u.username}"}.join('<br>')
     raw = "##{entry.name}\n  Project url: #{entry.url}\n  Team Members:\n  #{user_list}\n  About the project:\n  #{entry.about}\n  "
-    html = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true), autolink: true).render(raw)
+    formatted_html = Redcarpet::Render::HTML.new(:hard_wrap => true), autolink: true
+    raw = Redcarpet::Markdown.new(formatted_html).render(raw)
     params = {
       id: post_id,
-      raw: html
+      raw: raw
     }
     publish_url = "#{DISCOURSE_URL}/posts/#{post_id}.json?api_key=#{API_KEY}&api_username=#{owner.username}"
-    HTTParty.put(publish_url, body: {
-      post: params
-    })
+    HTTParty.put(publish_url,
+      body: {
+        post: params
+      })
   end
 
   def post_entry

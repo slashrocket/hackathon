@@ -34,7 +34,9 @@ hackathonPanel = angular
           },
           onEnter: ['Session', '$rootScope', function(Session, $rootScope){
               Session.get().$promise.then(function(data){
-                if (data.user.role == "admin"){$rootScope.user = data.user}
+                if (data.user.role == "admin"){
+                  $rootScope.user = data.user
+                }
               });
           }]
         })
@@ -52,7 +54,7 @@ hackathonPanel = angular
           },
           onEnter: ['Session', '$rootScope', 'cfpLoadingBar', function(Session, $rootScope, cfpLoadingBar){
             cfpLoadingBar.start();
-              
+
             Session.get().$promise.then(function(data){
               cfpLoadingBar.complete();
               if (data.user.role == "admin"){$rootScope.user = data.user}

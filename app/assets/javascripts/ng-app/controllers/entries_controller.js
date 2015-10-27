@@ -4,8 +4,8 @@ hackathonPanel
       $scope.entries = entries;
 
       $scope.search = "";
-      $timeout(function(){
-        if (query.search){
+      $timeout(function() {
+        if (query.search) {
           var e = document.getElementById('entry_search');
           e.value = query.search;
           var $e = angular.element(e);

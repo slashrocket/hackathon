@@ -1,12 +1,12 @@
 hackathonPanel
   .controller('UsersController', ['$rootScope', '$scope', '$timeout', 'users', 'query', 'User', 'ngDialog',
     function($rootScope, $scope, $timeout, users, query, User, ngDialog) {
-      
+
       $scope.users = users;
       $scope.roles = [
-        {value: 'user', text: 'user'},
-        {value: 'admin', text: 'admin'}
-      ]; 
+        { value: 'user', text: 'user' },
+        { value: 'admin', text: 'admin' }
+      ];
       $scope.search = "";
       $timeout(function(){
         if (query.search) {
